@@ -1,23 +1,26 @@
-var path = require('path')
+const path = require('path')
 
-const BUILD_DIR = path.resolve(__dirname, 'dist')
-const APP_DIR = path.resolve(__dirname, './')
+const PATHS = {
+  app: path.resolve(__dirname, 'src'),
+  build: path.resolve(__dirname, 'dist')
+}
 
 const config = {
 
-  entry: './main.js',
+  entry: PATHS.app,
 
   devServer: {
+    historyApiFallback: true,
     hot: true,
     inline: true,
-    port: 7700,
-    historyApiFallback: true
+    stats: 'errors-only',
+    port: 8080
   },
 
   output: {
-    path: BUILD_DIR,
-    filename: 'react-auto-tabs.js',
-    publicPath: 'http://localhost:7700/dist'
+    path: PATHS.build,
+    filename: 'bundle.js',
+    publicPath: 'http://localhost:8080/dist'
   },
 
   externals: {
@@ -30,15 +33,15 @@ const config = {
       {
         test: /\.js?/,
         exclude: /node_modules/,
-        include: APP_DIR,
+        include: PATHS.app,
         loader: 'babel'
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        include: APP_DIR,
+        include: PATHS.app,
         loaders: ['style', 'css', 'sass']
-      },
+      }
     ]
   }
 }

@@ -1,14 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import './src/scss/main.scss'
+import './styles/main.scss'
 
-const Main = () => {
+const App = () => {
   return (
     <div>
+      <div></div>
       <h1>React billboard</h1>
     </div>
   )
 }
 
-render(<Main/>, document.getElementById('app'))
+render(<App/>, document.getElementById('app'))

@@ -4,10 +4,9 @@
   "description": "React Billboard app",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack -d --watch",
+    "start": "webpack-dev-server --hot --inline",
     "build": "./node_modules/.bin/webpack -d",
-    "test": "mocha --require ignore-styles -w test/helpers/browser.js src/**/__spec__/*.spec.js",
-    "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
+    "test": "mocha --require ignore-styles -w test-helpers/browser.js src/**/__spec__/*.spec.js"
   },
   "author": "Tony Coop",
   "license": "ISC",
