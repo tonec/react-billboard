@@ -1,0 +1,32 @@
+{
+  "name": "react-billboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonec/react-billboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonec/react-billboard/issues"
+  },
+  "homepage": "https://github.com/tonec/react-billboard#readme",
+  "devDependencies": {
+    "css-loader": "^0.26.0",
+    "html-webpack-plugin": "^2.24.1",
+    "standard": "^8.6.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^1.0.1",
+    "webpack-validator": "^2.2.9"
+  }
+}
