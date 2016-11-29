@@ -38,7 +38,6 @@ const config = {
       },
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
         include: PATHS.app,
         loaders: ['style', 'css', 'sass']
       }
