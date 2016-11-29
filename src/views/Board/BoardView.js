@@ -1,8 +1,14 @@
 import React from 'react'
+import { Box } from '../../components/common'
 
 const BoardView = (props) => {
   return (
-    <h1>React Billboard</h1>
+    <div>
+      <h1>React Billboard</h1>
+      <Box>
+        sdsd
+      </Box>
+    </div>
   )
 }
 
