@@ -7,7 +7,7 @@ const PATHS = {
 
 const config = {
 
-  entry: PATHS.app,
+  entry: `${PATHS.app}/App.js`,
 
   devServer: {
     historyApiFallback: true,
