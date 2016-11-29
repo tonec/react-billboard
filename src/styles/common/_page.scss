@@ -11,6 +11,11 @@ html {
 	height: 100%;
 }
 
+body {
+  background: $body-bg-color;
+	color: $body-color;
+}
+
 .page-wrap {
 	padding-top: 45px;
 
@@ -21,20 +26,4 @@ html {
 
 .container {
 	@include container();
-}
-
-body {
-  background: #272727;
-}
-
-h1 {
-  color: #fff;
-}
-
-.box {
-  background: linear-gradient(to bottom, #f8f8f8 0%,#d7d7d7 100%);
-}
-
-.card {
-  background: linear-gradient(to bottom, #f8f8f8 0%,#d7d7d7 100%);
 }

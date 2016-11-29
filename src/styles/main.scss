@@ -33,7 +33,8 @@
 @import 'common/sticky-footer';
 
 // Layout
-@import 'layout/two_column';
+@import 'layout/column-one';
+@import 'layout/column-two';
 
 // Typography
 // @import 'typography/font';
@@ -49,3 +50,5 @@
 // @import 'component/masthead-header-logo';
 // @import 'component/masthead-hamburger';
 // @import 'component/masthead-primary-nav';
+@import 'component/box';
+@import 'component/board';

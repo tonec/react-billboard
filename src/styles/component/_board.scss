@@ -1,9 +1,7 @@
 // ==========================================================================
-// Layout: Two column
+// Component: Board
 // ==========================================================================
 
-// Uses Susy to generate the grid - http://susy.oddbird.net/
-
-.content {
-	@include span(8);
+.board {
+  
 }
