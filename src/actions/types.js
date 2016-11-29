@@ -1,2 +1,2 @@
-export const ADD_LANE = 'ADD_LANE'
-export const ADD_STORY = 'ADD_STORY'
+export const LANE_ADDED = 'LANE_ADDED'
+export const STORY_ADDED = 'STORY_ADDED'

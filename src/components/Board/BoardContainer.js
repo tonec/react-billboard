@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import uuid from 'uuid'
+import { laneAdded } from '../../actions/BoardActions'
 import Board from './Board'
 
 class BoardContainer extends Component {
@@ -7,17 +9,21 @@ class BoardContainer extends Component {
   constructor (props) {
     super(props)
 
-    this.addLane = this.addLane.bind(this)
+    this.onAddLane = this.onAddLane.bind(this)
   }
 
-  addLane () {
-    console.log('addlane')
+  onAddLane () {
+    this.props.laneAdded({
+      id: uuid.v4(),
+      name: 'New lane'
+    })
   }
 
   render () {
+    console.log('Board container: ', this.props)
     return (
       <Board
-        addLane={this.addLane}
+        addLane={this.onAddLane}
         { ...this.props }
       />
     )
@@ -25,9 +31,10 @@ class BoardContainer extends Component {
 }
 
 const mapStateToProps = ({ board }) => {
+  console.log('mapStateToProps: ', board)
   return {
     lanes: board.lanes
   }
 }
 
-export default connect(mapStateToProps)(BoardContainer)
+export default connect(mapStateToProps, { laneAdded })(BoardContainer)

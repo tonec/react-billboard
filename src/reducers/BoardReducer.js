@@ -1,3 +1,4 @@
+import { LANE_ADDED } from '../actions/types'
 
 const INITIAL_STATE = {
   lanes: [
@@ -11,5 +12,13 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   console.log('Board Reducer: ', state, action)
-  return state
+
+  switch (action.type) {
+
+    case LANE_ADDED:
+      return { ...state, lanes: state.lanes.concat(action.payload) }
+
+    default:
+      return state
+  }
 }

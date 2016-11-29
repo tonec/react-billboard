@@ -2,6 +2,7 @@ import React from 'react'
 import Lane from './Lane'
 
 const Board = (props) => {
+  // console.log('Board: ', props)
   return (
     <div className='board'>
 
@@ -19,6 +20,7 @@ const Board = (props) => {
           )
         })}
       </div>
+
     </div>
   )
 }
