@@ -1,0 +1,73 @@
+// ==========================================================================
+// Headings
+// ==========================================================================
+
+h1,
+.alpha {
+	@include font-size($h1-size-small);
+	margin: 0 0 24px;
+}
+
+h2,
+.beta {
+	@include font-size($h2-size-small);
+	margin: 0 0 $global-line-height;
+}
+
+h3,
+.gamma {
+	@include font-size($h3-size-small);
+	margin: 0 0 $global-line-height;
+}
+
+h4,
+.delta {
+	@include font-size($h4-size-small);
+	margin: 0 0 $global-line-height;
+}
+
+h5,
+.epsilon {
+	@include font-size($h5-size-small);
+	margin: 0 0 $global-line-height;
+}
+
+h6,
+.zeta {
+	@include font-size($h6-size-small);
+	margin: 0;
+}
+
+
+@include bp(medium up) {
+
+	h1,
+	.alpha {
+		@include font-size($h1-size);
+	}
+
+	h2,
+	.beta {
+		@include font-size($h2-size);
+	}
+
+	h3,
+	.gamma {
+		@include font-size($h3-size);
+	}
+
+	h4,
+	.delta {
+		@include font-size($h4-size);
+	}
+
+	h5,
+	.epsilon {
+		@include font-size($h5-size);
+	}
+
+	h6,
+	.zeta {
+		@include font-size($h6-size);
+	}
+}

@@ -1,0 +1,63 @@
+// ==========================================================================
+// Font
+// ==========================================================================
+
+// 	@license
+// 	MyFonts Webfont Build ID 3014336, 2015-04-23T10:20:57-0400
+//
+// 	The fonts listed in this notice are subject to the End User License
+// 	Agreement(s) entered into by the website owner. All other parties are
+// 	explicitly restricted from using the Licensed Webfonts(s).
+//
+// 	You may obtain a valid license at the URLs below.
+//
+// 	Webfont: AvenirLTStd-Roman by Linotype
+// 	URL: http://www.myfonts.com/fonts/linotype/avenir/55-roman/
+// 	Copyright: Copyright &#x00A9; 1989, 1995, 2002 Adobe Systems Incorporated.
+// 	All Rights Reserved. &#x00A9; 1981, 1995, 2002 Heidelberger Druckmaschinen AG.
+// 	All rights reserved. Licensed pageviews: 250,000
+//
+// 	License: http://www.myfonts.com/viewlicense?type=web&buildid=3014336
+//
+// 	© 2015 MyFonts Inc
+
+
+@font-face{
+	font-family: 'BureauGrotesque-ThreeSeven';
+	src: url('#{$asset-path}font/BureauGrotesque-ThreeSeven-eot.eot?#iefix') format('embedded-opentype'),
+		url('#{$asset-path}font/BureauGrotesque-ThreeSeven-woff.woff') format('-woff.woff'),
+		url('#{$asset-path}font/BureauGrotesque-ThreeSeven-ttf.ttf') format('truetype'),
+		url('#{$asset-path}font/BureauGrotesque-ThreeSeven-svg.svg#webfontGhcwM4E5') format('svg');
+}
+
+@font-face{
+	font-family: 'KingsCaslonText-Regular';
+	src: url('#{$asset-path}font/KingsCaslonText-Regular-eot.eot?#iefix') format('embedded-opentype'),
+		url('#{$asset-path}font/KingsCaslonText-Regular-woff.woff') format('-woff.woff'),
+		url('#{$asset-path}font/KingsCaslonText-Regular-ttf.ttf') format('truetype'),
+		url('#{$asset-path}font/KingsCaslonText-Regular-svg.svg#webfontXBhpRb6O') format('svg');
+}
+
+@font-face{
+	font-family: 'KingsCaslonText-Italic';
+	src: url('#{$asset-path}font/KingsCaslonText-Italic-eot.eot') format('embedded-opentype'),
+		url('#{$asset-path}font/KingsCaslonText-Italic-woff.woff') format('-woff.woff'),
+		url('#{$asset-path}font/KingsCaslonText-Italic-ttf.ttf') format('truetype'),
+		url('#{$asset-path}font/KingsCaslonText-Italic-svg.svg') format('svg');
+}
+
+@font-face{
+	font-family: 'KingsCaslonText-Bold';
+	src: url('#{$asset-path}font/KingsCaslonText-Bold-eot.eot') format('embedded-opentype'),
+		url('#{$asset-path}font/KingsCaslonText-Bold-woff.woff') format('-woff.woff'),
+		url('#{$asset-path}font/KingsCaslonText-Bold-ttf.ttf') format('truetype'),
+		url('#{$asset-path}font/KingsCaslonText-Bold-svg.svg') format('svg');
+}
+
+@font-face{
+	font-family: 'KingsCaslonText-BoldItalic';
+	src: url('#{$asset-path}font/KingsCaslonText-BoldItalic-eot.eot') format('embedded-opentype'),
+		url('#{$asset-path}font/KingsCaslonText-BoldItalic-woff.woff') format('-woff.woff'),
+		url('#{$asset-path}font/KingsCaslonText-BoldItalic-ttf.ttf') format('truetype'),
+		url('#{$asset-path}font/KingsCaslonText-BoldItalic-svg.svg') format('svg');
+}

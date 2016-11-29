@@ -1,0 +1,80 @@
+// ==========================================================================
+// Primary nav
+// ==========================================================================
+
+nav {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50%;
+	margin: 0 auto;
+
+	@include bp(large) {
+		position: relative;
+		top: auto;
+		width: auto;
+		height: 90px;
+		max-width: 1200px;
+	}
+}
+
+.nav-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	padding: 0 50px 0 60px;
+	width: 100%;
+	box-shadow: 0 3px 0 0 rgba(102, 102, 102, 0.31);
+
+	.nav-heading {
+		float: left;
+		width: 100%;
+
+		h4 {
+			margin: 0;
+			text-align: center;
+			line-height: 45px;
+			@include font-size(18px);
+		}
+	}
+
+	@include bp(large) {
+		background-color: transparent;
+		border: 0;
+		display: none;
+	}
+}
+
+.nav-close {
+	position: relative;
+	float: right;
+	margin-right: -50px;
+
+	.close {
+		display: block;
+		position: relative;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		width: 50px;
+		height: 45px;
+		box-shadow: none;
+		border: 0;
+		cursor: pointer;
+		background-color: #f1f1f1;
+
+		svg {
+			position: absolute;
+			top: 13px;
+			left: 16px;
+			width: 19px;
+			height: 19px;
+		}
+
+		&:hover {
+			border: 0;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+// ==========================================================================
+// Masthead
+// ==========================================================================
+
+.masthead {
+	position: fixed;
+	z-index: 9999;
+	width: 200%;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden;
+	transition: left 0.25s;
+
+	&.open {
+		left: -100%;
+	}
+
+	@include bp(large) {
+		position: relative;
+		width: auto;
+	}
+}

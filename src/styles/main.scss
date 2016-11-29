@@ -1,15 +1,51 @@
-body {
-  background: #272727;
-}
+// ==========================================================================
+// Main
+// ==========================================================================
 
-h1 {
-  color: #fff;
-}
+@charset 'utf-8';
 
-.box {
-  background: linear-gradient(to bottom, #f8f8f8 0%,#d7d7d7 100%);
-}
+// Vendor
+@import "~susy/sass/susy";
+@import '~normalize.scss/normalize.scss';
 
-.card {
-  background: linear-gradient(to bottom, #f8f8f8 0%,#d7d7d7 100%);
-}
+// Config
+@import 'var';
+@import 'color';
+@import 'susy-settings';
+
+// Mixins
+@import 'mixin/breakpoint';
+@import 'mixin/font-size';
+@import 'mixin/image-replacement';
+@import 'mixin/position-absolute';
+@import 'mixin/ratio';
+@import 'mixin/visually-hidden';
+
+// Helper classes
+@import 'helper/clearfix';
+@import 'helper/image-replacement';
+@import 'helper/visually-hidden';
+@import 'helper/hidden';
+
+// Common
+@import 'common/page';
+@import 'common/svg-store';
+@import 'common/sticky-footer';
+
+// Layout
+@import 'layout/two_column';
+
+// Typography
+// @import 'typography/font';
+@import 'typography/element';
+@import 'typography/heading';
+
+// Print
+// @import 'print/print';
+
+// Component
+// @import 'component/masthead';
+// @import 'component/masthead-header';
+// @import 'component/masthead-header-logo';
+// @import 'component/masthead-hamburger';
+// @import 'component/masthead-primary-nav';

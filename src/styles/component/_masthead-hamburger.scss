@@ -1,0 +1,66 @@
+// ==========================================================================
+// Hamburger
+// ==========================================================================
+
+$button-width: 50px;                    // The width of the button area
+$button-height: 45px;                   // The height of the button area
+$bar-thickness: 3px;                    // The thickness of the button bars
+$button-pad: 15px;                      // The left/right padding between button area and bars.
+$button-bar-space: 5px;                	// The spacing between button bars
+$button-color: #0a2d50;					// The color of the hamburger bars
+$button-background-color: #f1f1f1;		// The background color
+
+.hamburger {
+	display: block;
+	position: relative;
+	margin: 0 -50px 0 0;
+	padding: 0;
+	box-shadow: none;
+	border-radius: 0;
+	border: 0;
+	float: right;
+	cursor: pointer;
+	width: $button-width;
+	height: $button-height;
+	background-color: $button-background-color;
+	@include ir();
+
+	@include bp(large) {
+		display: none;
+	}
+
+	&:focus,
+	&:hover {
+		outline: none;
+		border: 0;
+	}
+
+	span {
+		display: block;
+		position: absolute;
+		top: ($button-height / 2) - ($bar-thickness / 2);
+		left: $button-pad;
+		right: $button-pad;
+		height: $bar-thickness;
+		background: $button-color;
+	}
+
+	span::before,
+	span::after {
+		position: absolute;
+		display: block;
+		left: 0;
+		width: 100%;
+		height: $bar-thickness;
+		background-color: $button-color;
+		content: '';
+	}
+
+	span::before {
+		top: -$bar-thickness - $button-bar-space;
+	}
+
+	span::after {
+		bottom: -$bar-thickness - $button-bar-space;
+	}
+}

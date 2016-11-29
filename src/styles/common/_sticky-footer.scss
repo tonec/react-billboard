@@ -1,0 +1,24 @@
+// ==========================================================================
+// Sticky footer
+// ==========================================================================
+
+$sticky-footer-height: 50px;
+
+body {
+	height: 100%;
+}
+
+.page-wrap {
+	min-height: 100%;
+	margin-bottom: -$sticky-footer-height;
+
+	&::after {
+		content: '';
+		display: block;
+		height: $sticky-footer-height;
+	}
+}
+
+.footer-wrap {
+	height: $sticky-footer-height;
+}

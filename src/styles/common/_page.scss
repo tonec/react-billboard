@@ -1,0 +1,40 @@
+// ==========================================================================
+// Page
+// ==========================================================================
+
+@include border-box-sizing;
+
+html {
+	font-size: ($global-font-size / 16px) * 1rem;
+	line-height: $global-line-height / $global-font-size;
+	overflow-y: scroll;
+	height: 100%;
+}
+
+.page-wrap {
+	padding-top: 45px;
+
+	@include bp(large) {
+		padding-top: 0;
+	}
+}
+
+.container {
+	@include container();
+}
+
+body {
+  background: #272727;
+}
+
+h1 {
+  color: #fff;
+}
+
+.box {
+  background: linear-gradient(to bottom, #f8f8f8 0%,#d7d7d7 100%);
+}
+
+.card {
+  background: linear-gradient(to bottom, #f8f8f8 0%,#d7d7d7 100%);
+}

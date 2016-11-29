@@ -1,0 +1,124 @@
+// ==========================================================================
+// Mixin: Breakpoints
+// ==========================================================================
+
+$breakpoints: (
+	small: $small,
+	medium: $medium,
+	large: $large,
+	xlarge: $xlarge,
+	xxlarge: $xxlarge
+);
+
+@function breakpoint($val) {
+	$breakpoint: nth($val, 1);
+	$breakpoint-max: 0;
+	$modifier: if(length($val) > 1, nth($val, 2), up);
+	$str: '';
+	$named: false;
+
+	@if type-of($breakpoint) == 'string' {
+
+		@if map-has-key($breakpoints, $breakpoint) {
+
+			@if $modifier == 'only' or $modifier == 'down' {
+				$breakpoint-max: map-next($breakpoints, $breakpoint);
+			}
+
+			$breakpoint: map-get($breakpoints, $breakpoint);
+			$named: true;
+		}
+		@else {
+			$breakpoint: 0;
+			@warn 'breakpoint(): "#{$val}" is not defined in your $breakpoints setting.';
+		}
+	}
+
+	@if $breakpoint > 0 or $modifier == 'only' or $modifier == 'down' {
+
+		@if $modifier == 'only' {
+
+			@if $named == true {
+
+				// Only use 'min-width' if the floor is greater than 0
+				@if $breakpoint > 0 {
+					$str: $str + '(min-width: #{$breakpoint})';
+
+					// Only add 'and' to the media query if there's a ceiling
+					@if $breakpoint-max != null {
+						$str: $str + ' and ';
+					}
+				}
+
+				// Only use 'max-width' if there's a ceiling
+				@if $breakpoint-max != null {
+					$str: $str + '(max-width: #{$breakpoint-max})';
+				}
+			}
+			@else {
+				@warn 'breakpoint(): Only named media queries can have an `only` range.';
+			}
+		}
+
+		// `down` ranges use the format `(max-width: n)`
+		@else if $modifier == 'down' {
+			$max: if($named, $breakpoint-max, $breakpoint);
+
+			// Skip media query creation if input value is exactly '0 down',
+			// unless the function was called as 'small down', in which case it's just 'small only'
+			@if $named or $breakpoint > 0 {
+				@if $max != null {
+					$str: $str + '(max-width: #{$max})';
+				}
+			}
+		}
+
+		// `up` ranges use the format `(min-width: n)`
+		@else if $breakpoint > 0 {
+			$str: $str + '(min-width: #{$breakpoint})';
+		}
+	}
+
+	@return $str;
+}
+
+@mixin bp($value) {
+	$str: breakpoint($value);
+
+	// If $str is still an empty string, no media query is needed
+	@if $str == '' {
+		@content;
+	}
+
+	// Otherwise, wrap the content in a media query
+	@else {
+		@media screen and #{$str} {
+			@content;
+		}
+	}
+}
+
+@function map-next($map, $key) {
+	// Store the values of the map as a list, so we can access them with nth
+	$values: map-values($map);
+
+	$i: 1;
+	$found: false;
+	@each $val in map-keys($map) {
+		@if $found == false {
+			@if ($key == $val) {
+				$found: true;
+			}
+			$i: $i + 1;
+		}
+	}
+
+	// If the key doesn't exist, or it's the last key in the map, return null
+	@if $i > length($map) {
+		@return null;
+	}
+	// Otherwise, return the value
+	@else {
+		@return nth($values, $i);
+	}
+}

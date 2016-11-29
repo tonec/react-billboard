@@ -1,0 +1,26 @@
+// ==========================================================================
+// Header logo
+// ==========================================================================
+
+.header-logo {
+	float: left;
+	position: relative;
+	width: 60px;
+	margin-left: -60px;
+
+	img {
+		display: block;
+		width: 100%;
+	}
+
+	@include bp(large) {
+		position: relative;
+		width: auto;
+		margin-left: 0;
+
+		img {
+			width: 189px;
+		}
+	}
+}
+
