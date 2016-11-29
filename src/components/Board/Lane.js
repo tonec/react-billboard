@@ -2,7 +2,17 @@ import React from 'react'
 
 const Lane = (props) => {
     return (
-      <div>Lane</div>
+      <div className='lane box'>
+
+        <div className='lane-header'>
+          <h2>{props.name}</h2>
+        </div>
+
+        <div className='lane-body'>
+
+        </div>
+
+      </div>
     )
 }
 
