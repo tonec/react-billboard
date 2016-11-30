@@ -20,7 +20,6 @@ class BoardContainer extends Component {
   }
 
   render () {
-    console.log('Board container: ', this.props)
     return (
       <Board
         addLane={this.onAddLane}
@@ -31,7 +30,6 @@ class BoardContainer extends Component {
 }
 
 const mapStateToProps = ({ board }) => {
-  console.log('mapStateToProps: ', board)
   return {
     lanes: board.lanes
   }
