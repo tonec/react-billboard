@@ -1,16 +1,17 @@
 import React from 'react'
-import Story from './Story'
+import Story from '../Story/Story'
+import LaneHeader from './LaneHeader'
+import LaneToolbarContainer from './LaneToolbarContainer'
 
 const Lane = (props) => {
     return (
       <div className='lane box'>
 
-        <div className='lane-header'>
-          <div className='lane-actions'>
-            <button className='btn' onClick={props.addStore}>Add story</button>
-          </div>
-          <h2>{props.name}</h2>
-        </div>
+        <LaneToolbarContainer
+          laneId={props.laneId}
+        />
+
+        <LaneHeader name={props.name} />
 
         <div className='lane-body'>
           {props.stories.map(story => {

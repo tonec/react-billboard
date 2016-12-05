@@ -1,4 +1,4 @@
-import { LANE_ADDED } from '../actions/types'
+import { LANE_ADDED, LANE_DELETED } from '../actions/types'
 
 const INITIAL_STATE = {
   lanes: [
@@ -15,6 +15,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case LANE_ADDED:
       return { ...state, lanes: state.lanes.concat(action.payload) }
+
+    case LANE_DELETED:
+      return { ...state, lanes: state.lanes.filter(lane => lane.id !== action.payload) }
 
     default:
       return state

@@ -1,5 +1,5 @@
 import React from 'react'
-import LaneContainer from './LaneContainer'
+import LaneContainer from '../Lane/LaneContainer'
 
 const Board = (props) => {
   return (
@@ -15,7 +15,11 @@ const Board = (props) => {
       <div className='board-body'>
         {props.lanes.map(lane => {
           return (
-            <LaneContainer key={lane.id} name={lane.name} />
+            <LaneContainer
+              key={lane.id}
+              laneId={lane.id}
+              name={lane.name}
+            />
           )
         })}
       </div>
