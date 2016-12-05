@@ -4,8 +4,6 @@ import uuid from 'uuid'
 import LaneToolbar from './LaneToolbar'
 import { storyAdded, laneDeleted } from '../../actions/LaneToolbarActions'
 
-console.log(storyAdded)
-
 class LaneToolbarContainer extends Component {
 
   constructor (props) {
