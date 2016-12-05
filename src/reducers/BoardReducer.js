@@ -2,10 +2,10 @@ import { LANE_ADDED, LANE_DELETED } from '../actions/types'
 
 const INITIAL_STATE = {
   lanes: [
-    { id: 1, name: 'Lane 1' },
-    { id: 2, name: 'Lane 2' },
-    { id: 3, name: 'Lane 3' },
-    { id: 4, name: 'Lane 4' }
+    { id: '1', name: 'Lane 1', storyIds: ['1', '2'] },
+    { id: '2', name: 'Lane 2', storyIds: ['3'] },
+    { id: '3', name: 'Lane 3', storyIds: ['4'] },
+    { id: '4', name: 'Lane 4' }
   ]
 }
 

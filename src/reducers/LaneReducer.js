@@ -2,9 +2,9 @@ import { STORY_ADDED } from '../actions/types'
 
 const INITIAL_STATE = {
   stories: [
-    { id: 1, title: 'Story 1' },
-    { id: 2, title: 'Story 2' },
-    { id: 3, title: 'Story 3' }
+    { id: '1', title: 'Story 1' },
+    { id: '2', title: 'Story 2' },
+    { id: '3', title: 'Story 3' }
   ]
 }
 
