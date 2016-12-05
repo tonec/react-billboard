@@ -4,17 +4,17 @@ import LaneHeader from './LaneHeader'
 import LaneToolbarContainer from './LaneToolbarContainer'
 
 const Lane = (props) => {
-    return (
-      <div className='lane box'>
+  return (
+    <div className='lane box'>
 
-        <LaneToolbarContainer
-          laneId={props.laneId}
-        />
+      <LaneToolbarContainer
+        laneId={props.laneId}
+      />
 
-        <LaneHeader name={props.name} />
+      <LaneHeader name={props.name} />
 
-        <div className='lane-body'>
-          {props.stories.map(story => {
+      <div className='lane-body'>
+        { props.stories.map(story => {
             return (
               <Story
                 key={story.id}
@@ -22,10 +22,10 @@ const Lane = (props) => {
               />
             )
           })}
-        </div>
-
       </div>
-    )
+
+    </div>
+  )
 }
 
 export default Lane
