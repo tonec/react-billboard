@@ -15,7 +15,8 @@ class BoardContainer extends Component {
   onAddLane () {
     this.props.laneAdded({
       id: uuid.v4(),
-      name: 'New lane'
+      name: 'New lane',
+      storyIds: []
     })
   }
 

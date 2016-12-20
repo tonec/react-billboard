@@ -9,7 +9,9 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(state)
+  // console.log('LaneReducer: ', state)
+  // console.log('LaneReducer: ', action)
+
   switch (action.type) {
     case STORY_ADDED:
       return { ...state, stories: state.stories.concat(action.payload) }

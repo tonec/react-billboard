@@ -1,4 +1,8 @@
-import { LANE_ADDED, LANE_DELETED } from '../actions/types'
+import {
+  LANE_ADDED,
+  LANE_DELETED,
+  STORY_ADDED
+} from '../actions/types'
 
 const INITIAL_STATE = {
   lanes: [
@@ -10,7 +14,8 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(state)
+  // console.log('BoardReducer', state)
+  // console.log('BoardReducer', action)
 
   switch (action.type) {
 
@@ -19,6 +24,16 @@ export default (state = INITIAL_STATE, action) => {
 
     case LANE_DELETED:
       return { ...state, lanes: state.lanes.filter(lane => lane.id !== action.payload) }
+
+    case STORY_ADDED:
+      return { ...state,
+        lanes: state.lanes.map(lane => {
+          if (lane.id === action.payload.laneId) {
+            lane.storyIds = lane.storyIds.concat([action.payload.id])
+          }
+          return lane
+        })
+      }
 
     default:
       return state

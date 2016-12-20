@@ -20,7 +20,8 @@ class LaneToolbarContainer extends Component {
   onAddStory () {
     this.props.storyAdded({
       id: uuid.v4(),
-      title: 'New title'
+      title: 'New title',
+      laneId: this.props.laneId
     })
   }
 
