@@ -19,6 +19,7 @@ const Board = (props) => {
               key={lane.id}
               laneId={lane.id}
               name={lane.name}
+              editing={lane.editing}
               storyIds={lane.storyIds}
             />
           )

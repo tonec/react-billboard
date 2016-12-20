@@ -1,0 +1,28 @@
+// ==========================================================================
+// Component: Lane
+// ==========================================================================
+
+.lane {
+  flex: 1;
+  margin: 0 10px;
+  padding: 10px 20px;
+}
+
+  .lane-header {
+    text-align: center;
+
+    h2 {
+      color: $black;
+      margin: 10px 0;
+      @include font-size(30px);
+    }
+
+    input {
+      color: $black;
+      text-align: center;
+      font-weight: 500;
+      margin: 10px 0;
+      width: 100%;
+      @include font-size(30px, 20px);
+    }
+  }

@@ -1,4 +1,6 @@
-import { STORY_ADDED } from '../actions/types'
+import {
+  STORY_ADDED
+} from '../actions/types'
 
 const INITIAL_STATE = {
   stories: [
@@ -13,6 +15,7 @@ export default (state = INITIAL_STATE, action) => {
   // console.log('LaneReducer: ', action)
 
   switch (action.type) {
+
     case STORY_ADDED:
       return { ...state, stories: state.stories.concat(action.payload) }
 

@@ -1,9 +1,12 @@
 import React from 'react'
+import { EditableInline } from '../common'
 
 const LaneHeader = (props) => {
   return (
     <div className='lane-header'>
-      <h2>{props.name}</h2>
+      <EditableInline { ...props } >
+        <h2>{props.name}</h2>
+      </EditableInline>
     </div>
   )
 }

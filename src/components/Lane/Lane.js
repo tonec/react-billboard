@@ -11,7 +11,7 @@ const Lane = (props) => {
         laneId={props.laneId}
       />
 
-      <LaneHeader name={props.name} />
+      <LaneHeader { ...props } />
 
       <div className='lane-body'>
         { props.stories.map(story => {

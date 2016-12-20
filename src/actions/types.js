@@ -1,4 +1,7 @@
 
 export const LANE_ADDED = 'LANE_ADDED'
 export const LANE_DELETED = 'LANE_DELETED'
+export const ENABLE_LANE_EDIT = 'ENABLE_LANE_EDIT'
+export const FINISH_LANE_EDIT = 'FINISH_LANE_EDIT'
+
 export const STORY_ADDED = 'STORY_ADDED'

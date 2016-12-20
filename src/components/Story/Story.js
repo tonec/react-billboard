@@ -1,17 +1,16 @@
 import React from 'react'
 
 const Story = (props) => {
-  console.log(props)
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          {props.title}
-        </div>
-        <div>
-          {props.description}
-        </div>
+        {props.title}
       </div>
-    )
+      <div>
+        {props.description}
+      </div>
+    </div>
+  )
 }
 
 export default Story
