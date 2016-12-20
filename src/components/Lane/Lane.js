@@ -19,6 +19,7 @@ const Lane = (props) => {
               <Story
                 key={story.id}
                 title={story.title}
+                description={story.description}
               />
             )
           })}
