@@ -5,7 +5,7 @@
 .lane {
   flex: 1;
   margin: 0 10px;
-  padding: 10px 20px;
+  padding: 10px 10px;
 }
 
   .lane-header {
@@ -13,7 +13,7 @@
 
     h2 {
       color: $black;
-      margin: 10px 0;
+      margin: 10px 0 11px;
       @include font-size(30px);
     }
 
@@ -22,6 +22,7 @@
       text-align: center;
       font-weight: 500;
       margin: 10px 0;
+      padding: 4px;
       width: 100%;
       @include font-size(30px, 20px);
     }

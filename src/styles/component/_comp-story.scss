@@ -1,8 +1,15 @@
 // ==========================================================================
-// Component: Box
+// Component: Story
 // ==========================================================================
 
-.box {
-  background: linear-gradient(to bottom, #f8f8f8 0%,#d7d7d7 100%);
+.story {
+  color: $black;
+  background-color: $white;
+  padding: 10px;
   border-radius: $border-radius;
+  margin-top: 10px;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }

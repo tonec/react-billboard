@@ -2,7 +2,7 @@ import React from 'react'
 
 const Story = (props) => {
   return (
-    <div>
+    <div className='story'>
       <div>
         {props.title}
       </div>
