@@ -1,19 +1,21 @@
 import React from 'react'
+import cx from 'classnames'
 
 const LaneToolbar = (props) => {
-
   return (
     <div className='lane-toolbar'>
 
       <button
         className='btn'
         onClick={props.addStory}
-      >Add story</button>
+      >+</button>
 
       <button
-        className='btn btn-danger pull-right'
+        className={cx('btn', 'btn-danger', 'pull-right', {
+          'disabled': (props.storyLength > 0)
+        })}
         onClick={props.deleteLane}
-      >Delete lane</button>
+      >X</button>
 
     </div>
   )

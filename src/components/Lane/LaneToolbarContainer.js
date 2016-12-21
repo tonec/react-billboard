@@ -14,7 +14,9 @@ class LaneToolbarContainer extends Component {
   }
 
   onDeleteLane (id) {
-    this.props.laneDeleted(id)
+    if (this.props.storyLength === 0) {
+      this.props.laneDeleted(id)
+    }
   }
 
   onAddStory () {
@@ -28,6 +30,7 @@ class LaneToolbarContainer extends Component {
   render () {
     return (
       <LaneToolbar
+        { ...this.props }
         deleteLane={this.onDeleteLane}
         addStory={this.onAddStory}
       />
