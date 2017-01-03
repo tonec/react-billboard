@@ -3,14 +3,14 @@ import BoardContainer from '../components/Board/BoardContainer'
 
 const BoardView = (props) => {
   return (
-    <div className="layout-col-one">
+    <div className='layout-col-one'>
 
       <h1>React Billboard</h1>
 
       <BoardContainer
         { ...props }
       />
-      
+
     </div>
   )
 }
