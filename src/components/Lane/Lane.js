@@ -4,7 +4,6 @@ import LaneHeader from './LaneHeader'
 import LaneToolbarContainer from './LaneToolbarContainer'
 
 const Lane = (props) => {
-  // console.log(props)
   return (
     <div className='lane box'>
 
