@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 
 import Board from '../Board'
+import LaneContainer from '../../Lane/LaneContainer'
 
 function setup () {
   const props = {
@@ -40,7 +41,8 @@ describe('<Board />', () => {
   })
 
   it('should render the LaneContainer for each lane in props', () => {
-    // TODO: finish this test
+    const { wrapper } = setup()
+    expect(wrapper.find(LaneContainer)).to.be.length(4)
   })
 
 })
