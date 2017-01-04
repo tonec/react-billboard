@@ -7,7 +7,9 @@ const data = {
   },
   lane: {
     stories: [
-      { id: '1', title: 'Story 1', description: 'Lorem ipsum dolor sit amet.' }
+      { id: '1', title: 'Story 1', description: 'Lorem ipsum dolor sit amet.' },
+      { id: '2', title: 'Story 1', description: 'Lorem ipsum dolor sit amet.' },
+      { id: '3', title: 'Story 1', description: 'Lorem ipsum dolor sit amet.' }
     ]
   }
 }
