@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
 import LaneHeader from '../LaneHeader'
+import EditableInline from '../../common/EditableInline'
 
 function setup () {
   const props = {
@@ -21,6 +22,7 @@ describe('<LaneHeader />', () => {
   it('should render the layout elements', () => {
     const { wrapper, props } = setup()
     expect(wrapper.find('.lane-header')).to.be.length(1)
+    expect(wrapper.find(EditableInline)).to.be.length(1)
     expect(wrapper.find('h2').text()).to.equal(props.name)
   })
 
