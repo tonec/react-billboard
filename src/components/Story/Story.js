@@ -3,10 +3,10 @@ import React from 'react'
 const Story = (props) => {
   return (
     <div className='story'>
-      <div>
+      <div className='story-title'>
         {props.title}
       </div>
-      <div>
+      <div className='story-description'>
         {props.description}
       </div>
     </div>
