@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-
 import LaneContainer from '../../containers/LaneContainer'
 
 const Board = (props) => {
