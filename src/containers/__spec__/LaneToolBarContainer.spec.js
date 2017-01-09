@@ -3,11 +3,11 @@ import { expect } from 'chai'
 import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
 
-import mockStore from '../../../../test-helpers/mockStore'
-import mockStoreData from '../../../../test-helpers/mockStoreData'
+import mockStore from '../../../test-helpers/mockStore'
+import mockStoreData from '../../../test-helpers/mockStoreData'
 
 import LaneToolbarContainer from '../LaneToolbarContainer'
-import LaneToolbar from '../LaneToolbar'
+import LaneToolbar from '../../components/Lane/LaneToolbar'
 
 function setup () {
   const store = mockStore(mockStoreData)

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { enableLaneEdit, finishLaneEdit } from '../../actions/LaneActions'
-import Lane from './Lane'
+import { enableLaneEdit, finishLaneEdit } from '../actions/LaneActions'
+import Lane from '../components/Lane/Lane'
 
 class LaneContainer extends Component {
 

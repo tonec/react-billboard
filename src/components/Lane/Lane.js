@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Story from '../Story/Story'
 import LaneHeader from './LaneHeader'
-import LaneToolbarContainer from './LaneToolbarContainer'
+import LaneToolbarContainer from '../../containers/LaneToolbarContainer'
 
 const Lane = (props) => {
   return (

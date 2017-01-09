@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 
 import Board from '../Board'
-import LaneContainer from '../../Lane/LaneContainer'
+import LaneContainer from '../../../containers/LaneContainer'
 
 function setup () {
   const props = {

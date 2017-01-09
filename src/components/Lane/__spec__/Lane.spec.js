@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
 import Lane from '../Lane'
-import LaneToolbarContainer from '../LaneToolbarContainer'
+import LaneToolbarContainer from '../../../containers/LaneToolbarContainer'
 import LaneHeader from '../LaneHeader'
 import Story from '../../Story/Story'
 

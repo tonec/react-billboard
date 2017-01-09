@@ -4,8 +4,8 @@ import uuid from 'uuid'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
-import { laneAdded } from '../../actions/BoardActions'
-import Board from './Board'
+import { laneAdded } from '../actions/BoardActions'
+import Board from '../components/Board/Board'
 
 class BoardContainer extends Component {
 

@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
-import LaneToolbar from './LaneToolbar'
-import { storyAdded, laneDeleted } from '../../actions/LaneToolbarActions'
+import LaneToolbar from '../components/Lane/LaneToolbar'
+import { storyAdded, laneDeleted } from '../actions/LaneToolbarActions'
 
 class LaneToolbarContainer extends Component {
 

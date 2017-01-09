@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import LaneContainer from '../Lane/LaneContainer'
+import LaneContainer from '../../containers/LaneContainer'
 
 const Board = (props) => {
   const { addLane, lanes } = props
