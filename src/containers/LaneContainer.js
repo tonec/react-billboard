@@ -1,7 +1,25 @@
 import React, { Component, PropTypes } from 'react'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { DropTarget } from 'react-dnd'
+import ItemTypes from '../constants/ItemTypes'
 import { enableLaneEdit, finishLaneEdit } from '../actions/LaneActions'
 import Lane from '../components/Lane/Lane'
+
+const laneTarget = {
+  drop (props, monitor) {
+    console.log(props)
+    console.log(monitor)
+    // moveStory (props.id)
+  }
+}
+
+function collect (connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  }
+}
 
 class LaneContainer extends Component {
 
@@ -34,14 +52,18 @@ class LaneContainer extends Component {
   }
 
   render () {
-    return (
-      <Lane
-        { ...this.props }
-        key={this.props.laneId}
-        handleClick={this.handleEnableEditing}
-        handleKeyPress={this.checkForReturn}
-        stories={this.selectStoriesById(this.props.storyIds, this.props.stories)}
-      />
+    const { connectDropTarget, isOver } = this.props
+
+    return connectDropTarget(
+      <div style={{ border: isOver ? '1px solid red' : 'none' }}>
+        <Lane
+          { ...this.props }
+          key={this.props.laneId}
+          handleClick={this.handleEnableEditing}
+          handleKeyPress={this.checkForReturn}
+          stories={this.selectStoriesById(this.props.storyIds, this.props.stories)}
+        />
+      </div>
     )
   }
 }
@@ -59,4 +81,7 @@ const mapStateToProps = ({ lane }) => {
   }
 }
 
-export default connect(mapStateToProps, { enableLaneEdit, finishLaneEdit })(LaneContainer)
+export default compose(
+  DropTarget(ItemTypes.STORY, laneTarget, collect),
+  connect(mapStateToProps, { enableLaneEdit, finishLaneEdit })
+)(LaneContainer)
