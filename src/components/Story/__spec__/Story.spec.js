@@ -5,11 +5,13 @@ import { shallow } from 'enzyme'
 import Story from '../Story'
 
 function setup () {
+  const OriginalStory = Story.DecoratedComponent
+  const identity = el => el
   const props = {
     title: 'Story title',
     description: 'Story description'
   }
-  const wrapper = shallow(<Story { ...props } />)
+  const wrapper = shallow(<OriginalStory { ...props } connectDragSource={identity} />)
 
   return {
     props,
