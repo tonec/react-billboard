@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { EditableInline } from '../common'
 
 const LaneHeader = (props) => {
@@ -9,6 +9,10 @@ const LaneHeader = (props) => {
       </EditableInline>
     </div>
   )
+}
+
+LaneHeader.propTypes = {
+  name: PropTypes.string.isRequired
 }
 
 export default LaneHeader

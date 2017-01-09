@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
 import LaneToolbar from './LaneToolbar'
@@ -36,6 +36,11 @@ class LaneToolbarContainer extends Component {
       />
     )
   }
+}
+
+LaneToolbarContainer.propTypes = {
+  laneId: PropTypes.string.isRequired,
+  storyLength: PropTypes.number.isRequired
 }
 
 export default connect(null, { storyAdded, laneDeleted })(LaneToolbarContainer)

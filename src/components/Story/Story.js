@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const Story = (props) => {
   return (
@@ -11,6 +11,11 @@ const Story = (props) => {
       </div>
     </div>
   )
+}
+
+Story.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 }
 
 export default Story

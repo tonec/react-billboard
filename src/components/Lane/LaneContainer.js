@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { enableLaneEdit, finishLaneEdit } from '../../actions/LaneActions'
 import Lane from './Lane'
@@ -36,14 +36,21 @@ class LaneContainer extends Component {
   render () {
     return (
       <Lane
-        key={this.props.id}
         { ...this.props }
+        key={this.props.laneId}
         handleClick={this.handleEnableEditing}
         handleKeyPress={this.checkForReturn}
         stories={this.selectStoriesById(this.props.storyIds, this.props.stories)}
       />
     )
   }
+}
+
+LaneContainer.propTypes = {
+  laneId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  editing: PropTypes.bool,
+  storyIds: PropTypes.array
 }
 
 const mapStateToProps = ({ lane }) => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import LaneContainer from '../Lane/LaneContainer'
 
 const Board = (props) => {
@@ -28,6 +28,10 @@ const Board = (props) => {
 
     </div>
   )
+}
+
+Board.propTypes = {
+  addLane: PropTypes.func.isRequired
 }
 
 export default Board

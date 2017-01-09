@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Story from '../Story/Story'
 import LaneHeader from './LaneHeader'
 import LaneToolbarContainer from './LaneToolbarContainer'
@@ -28,6 +28,12 @@ const Lane = (props) => {
 
     </div>
   )
+}
+
+Lane.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  handleKeyPress: PropTypes.func.isRequired,
+  stories: PropTypes.array.isRequired
 }
 
 export default Lane

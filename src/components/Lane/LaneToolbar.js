@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import cx from 'classnames'
 
 const LaneToolbar = (props) => {
@@ -19,6 +19,12 @@ const LaneToolbar = (props) => {
 
     </div>
   )
+}
+
+LaneToolbar.propTypes = {
+  deleteLane: PropTypes.func.isRequired,
+  addStory: PropTypes.func.isRequired,
+  storyLength: PropTypes.number.isRequired
 }
 
 export default LaneToolbar
