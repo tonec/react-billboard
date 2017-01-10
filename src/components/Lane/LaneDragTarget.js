@@ -4,8 +4,8 @@ import ItemTypes from '../../constants/ItemTypes'
 
 const laneTarget = {
   drop (props, monitor) {
-    console.log(props)
-    console.log(monitor)
+    console.log('laneTarget props: ', props)
+    console.log('laneTarget monitor: ', monitor)
     // moveStory (props.id)
   }
 }

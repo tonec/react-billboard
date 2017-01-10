@@ -7,15 +7,15 @@ import LaneDragTarget from './LaneDragTarget'
 const Lane = (props) => {
   return (
     <div className='lane box'>
-      <LaneDragTarget>
 
-        <LaneToolbarContainer
-          laneId={props.laneId}
-          storyLength={props.stories.length}
-        />
+      <LaneToolbarContainer
+        laneId={props.laneId}
+        storyLength={props.stories.length}
+      />
 
-        <LaneHeader { ...props } />
+      <LaneHeader { ...props } />
 
+      <LaneDragTarget laneId={props.laneId}>
         <div className='lane-body'>
           { props.stories.map(story => {
               return (
@@ -28,8 +28,8 @@ const Lane = (props) => {
               )
             })}
         </div>
-        
       </LaneDragTarget>
+
     </div>
   )
 }
