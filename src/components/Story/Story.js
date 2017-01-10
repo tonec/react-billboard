@@ -4,7 +4,6 @@ import ItemTypes from '../../constants/ItemTypes'
 
 const storySource = {
   beginDrag (props) {
-    console.log('storySource', props)
     return {
       storyId: props.id
     }

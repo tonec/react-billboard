@@ -17,8 +17,8 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  console.log('BoardReducer', state)
-  console.log('BoardReducer', action)
+  // console.log('BoardReducer', state)
+  // console.log('BoardReducer', action)
 
   switch (action.type) {
 
@@ -63,19 +63,23 @@ export default (state = INITIAL_STATE, action) => {
       }
 
     case STORY_DROPPED:
+      const currentLane = state.lanes.filter(lane => {
+        return lane.storyIds.indexOf(action.payload.storyId) !== -1
+      })[0]
+
+      // No lane change so return with no state change
+      if (currentLane.id === action.payload.newLaneId) {
+        return { ...state }
+      }
+
       return {
         ...state,
         lanes: state.lanes.map(lane => {
-          // Find the dropped story's current lane
-          if (lane.storyIds.indexOf(action.payload.storyId) !== -1) {
-            // Compare it to the new lane to confirm it differs
-            if (lane.id !== action.payload.newLaneId) {
-              // Remove from previous lane
-              lane.storyIds = lane.storyIds.filter(id => id !== action.payload.storyId)
-            }
-          }
-          // Add the story to the new lane 
-          if (lane.id === action.payload.newLaneId) {
+          if (lane.id !== action.payload.newLaneId) {
+            // Remove from the current lane
+            lane.storyIds = lane.storyIds.filter(id => id !== action.payload.storyId)
+          } else {
+            // Add to the new lane
             lane.storyIds = lane.storyIds.concat(action.payload.storyId)
           }
           return lane
@@ -86,3 +90,11 @@ export default (state = INITIAL_STATE, action) => {
       return state
   }
 }
+
+// Move
+// Check if the lane has changed
+//    yes, new lane
+//        remove from current lane
+//        add to new lane
+//    no
+//        do nothing
