@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
 import { DragDropContext } from 'react-dnd'
@@ -38,6 +39,7 @@ const mapStateToProps = ({ board }) => {
   }
 }
 
-BoardContainer = DragDropContext(HTML5Backend)(BoardContainer)
-
-export default connect(mapStateToProps, { laneAdded })(BoardContainer)
+export default compose(
+  DragDropContext(HTML5Backend),
+  connect(mapStateToProps, { laneAdded })
+)(BoardContainer)
