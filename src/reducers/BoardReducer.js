@@ -3,7 +3,8 @@ import {
   LANE_DELETED,
   ENABLE_LANE_EDIT,
   FINISH_LANE_EDIT,
-  STORY_ADDED
+  STORY_ADDED,
+  STORY_DROPPED
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -16,8 +17,8 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log('BoardReducer', state)
-  // console.log('BoardReducer', action)
+  console.log('BoardReducer', state)
+  console.log('BoardReducer', action)
 
   switch (action.type) {
 
@@ -28,7 +29,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, lanes: state.lanes.filter(lane => lane.id !== action.payload) }
 
     case ENABLE_LANE_EDIT:
-      return { ...state,
+      return {
+        ...state,
         lanes: state.lanes.map(lane => {
           if (lane.id === action.payload.laneId) {
             lane.editing = true
@@ -38,7 +40,8 @@ export default (state = INITIAL_STATE, action) => {
       }
 
     case FINISH_LANE_EDIT:
-      return { ...state,
+      return {
+        ...state,
         lanes: state.lanes.map(lane => {
           if (lane.id === action.payload.laneId) {
             lane.name = action.payload.name
@@ -49,10 +52,31 @@ export default (state = INITIAL_STATE, action) => {
       }
 
     case STORY_ADDED:
-      return { ...state,
+      return {
+        ...state,
         lanes: state.lanes.map(lane => {
           if (lane.id === action.payload.laneId) {
             lane.storyIds = lane.storyIds.concat([action.payload.id])
+          }
+          return lane
+        })
+      }
+
+    case STORY_DROPPED:
+      return {
+        ...state,
+        lanes: state.lanes.map(lane => {
+          // Find the dropped story's current lane
+          if (lane.storyIds.indexOf(action.payload.storyId) !== -1) {
+            // Compare it to the new lane to confirm it differs
+            if (lane.id !== action.payload.newLaneId) {
+              // Remove from previous lane
+              lane.storyIds = lane.storyIds.filter(id => id !== action.payload.storyId)
+            }
+          }
+          // Add the story to the new lane 
+          if (lane.id === action.payload.newLaneId) {
+            lane.storyIds = lane.storyIds.concat(action.payload.storyId)
           }
           return lane
         })
