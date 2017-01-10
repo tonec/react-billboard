@@ -2,31 +2,34 @@ import React, { PropTypes } from 'react'
 import Story from '../Story/Story'
 import LaneHeader from './LaneHeader'
 import LaneToolbarContainer from '../../containers/LaneToolbarContainer'
+import LaneDragTarget from './LaneDragTarget'
 
 const Lane = (props) => {
   return (
     <div className='lane box'>
+      <LaneDragTarget>
 
-      <LaneToolbarContainer
-        laneId={props.laneId}
-        storyLength={props.stories.length}
-      />
+        <LaneToolbarContainer
+          laneId={props.laneId}
+          storyLength={props.stories.length}
+        />
 
-      <LaneHeader { ...props } />
+        <LaneHeader { ...props } />
 
-      <div className='lane-body'>
-        { props.stories.map(story => {
-            return (
-              <Story
-                key={story.id}
-                id={story.id}
-                title={story.title}
-                description={story.description}
-              />
-            )
-          })}
-      </div>
-
+        <div className='lane-body'>
+          { props.stories.map(story => {
+              return (
+                <Story
+                  key={story.id}
+                  id={story.id}
+                  title={story.title}
+                  description={story.description}
+                />
+              )
+            })}
+        </div>
+        
+      </LaneDragTarget>
     </div>
   )
 }
