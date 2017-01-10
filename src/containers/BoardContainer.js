@@ -7,7 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { laneAdded } from '../actions/BoardActions'
 import Board from '../components/Board/Board'
 
-class BoardContainer extends Component {
+export class BoardContainer extends Component {
 
   constructor (props) {
     super(props)

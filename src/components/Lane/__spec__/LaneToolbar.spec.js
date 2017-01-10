@@ -8,7 +8,8 @@ import LaneToolbar from '../LaneToolbar'
 function setup () {
   const props = {
     addStory: sinon.spy(),
-    deleteLane: sinon.spy()
+    deleteLane: sinon.spy(),
+    storyLength: 1
   }
   const wrapper = shallow(<LaneToolbar { ...props } />)
 

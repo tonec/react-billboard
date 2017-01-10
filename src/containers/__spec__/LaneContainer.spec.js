@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
+import { DragDropContext } from 'react-dnd'
+import TestBackend from 'react-dnd-test-backend'
 
 import mockStore from '../../../test-helpers/mockStore'
 import mockStoreData from '../../../test-helpers/mockStoreData'
@@ -9,12 +11,25 @@ import mockStoreData from '../../../test-helpers/mockStoreData'
 import LaneContainer from '../LaneContainer'
 import Lane from '../../components/Lane/Lane'
 
+function wrapInTestContext (DecoratedComponent) {
+  return DragDropContext(TestBackend)(
+    class TestContextContainer extends Component {
+      render () {
+        return <DecoratedComponent { ...this.props } />
+      }
+    }
+  )
+}
+
 function setup () {
   const store = mockStore(mockStoreData)
+  const LaneContainerContext = wrapInTestContext(LaneContainer)
   const wrapper = mount(
     <Provider store={store}>
-      <LaneContainer
+      <LaneContainerContext
         storyIds={[1, 2]}
+        name={'Lane name'}
+        laneId={'1'}
       />
     </Provider>
   )

@@ -11,7 +11,10 @@ function setup () {
   const props = {
     stories: [
       { id: '1', title: 'Story 1', description: 'Lorem ipsum dolor sit amet.' }
-    ]
+    ],
+    handleClick: () => {},
+    handleKeyPress: () => {},
+    name: ''
   }
   const wrapper = shallow(<Lane { ...props } />)
 

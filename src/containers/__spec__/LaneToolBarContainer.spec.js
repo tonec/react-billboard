@@ -13,7 +13,10 @@ function setup () {
   const store = mockStore(mockStoreData)
   const wrapper = mount(
     <Provider store={store}>
-      <LaneToolbarContainer />
+      <LaneToolbarContainer
+        storyLength={1}
+        laneId={'1'}
+      />
     </Provider>
   )
 

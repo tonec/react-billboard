@@ -8,6 +8,7 @@ function setup () {
   const OriginalStory = Story.DecoratedComponent
   const identity = el => el
   const props = {
+    id: '1',
     title: 'Story title',
     description: 'Story description'
   }
