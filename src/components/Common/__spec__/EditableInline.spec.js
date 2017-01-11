@@ -5,6 +5,11 @@ import sinon from 'sinon'
 
 import { EditableInline } from '../'
 
+import jsdom from 'jsdom'
+const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
+global.document = doc
+global.window = doc.defaultView
+
 describe('<EditableInline />', () => {
 
   describe('if editing is false', () => {

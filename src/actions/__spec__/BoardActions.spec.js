@@ -1,6 +1,11 @@
 import { expect } from 'chai'
 import { laneAdded } from '../BoardActions'
-import { LANE_ADDED } from '../types'
+import {
+  LANE_ADDED,
+  FETCH_LANES,
+  FETCH_LANES_SUCCESS,
+  FETCH_LANES_FAILURE
+} from '../types'
 
 describe('BoardActions', () => {
 
