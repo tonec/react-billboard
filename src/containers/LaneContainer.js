@@ -54,9 +54,9 @@ LaneContainer.propTypes = {
   storyIds: PropTypes.array
 }
 
-const mapStateToProps = ({ lane }) => {
+const mapStateToProps = ({ story }) => {
   return {
-    stories: lane.stories
+    stories: story.stories
   }
 }
 

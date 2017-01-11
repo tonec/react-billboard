@@ -33,9 +33,9 @@ export class BoardContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ board }) => {
+const mapStateToProps = ({ lane }) => {
   return {
-    lanes: board.lanes
+    lanes: lane.lanes
   }
 }
 
