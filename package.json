@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "build": "./node_modules/.bin/webpack -d",
-    "test": "mocha --require ignore-styles -w test-helpers/browser.js src/**/*.spec.js"
+    "test": "mocha --require ignore-styles test-helpers/browser.js src/**/*.spec.js",
+    "test-watch": "mocha --require ignore-styles -w test-helpers/browser.js src/**/*.spec.js"
   },
   "author": "Tony Coop",
   "license": "ISC",
