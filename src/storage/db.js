@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 var config = {
   apiKey: 'AIzaSyBm7qUcL9-I7TKU6rzoTvn-EXSzuvF5K94',
   authDomain: 'react-billboard-dev.firebaseapp.com',
