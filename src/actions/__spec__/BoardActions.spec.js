@@ -1,10 +1,7 @@
 import { expect } from 'chai'
 import { laneAdded } from '../BoardActions'
 import {
-  LANE_ADDED,
-  FETCH_LANES,
-  FETCH_LANES_SUCCESS,
-  FETCH_LANES_FAILURE
+  ADD_LANE
 } from '../types'
 
 describe('BoardActions', () => {
@@ -12,7 +9,7 @@ describe('BoardActions', () => {
   it('should create an action to add a lane', () => {
     const id = 22
     const expectedAction = {
-      type: LANE_ADDED,
+      type: ADD_LANE,
       payload: id
     }
     expect(laneAdded(id)).to.deep.equal(expectedAction)

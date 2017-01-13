@@ -56,8 +56,13 @@ LaneContainer.propTypes = {
 
 const mapStateToProps = ({ story }) => {
   return {
-    stories: story.stories
+    stories: stackedStorySelector(story.byId)
   }
+}
+
+function stackedStorySelector (storiesById) {
+  const lanes = Object.keys(storiesById).map(id => storiesById[id])
+  return lanes
 }
 
 export default connect(mapStateToProps, { enableLaneEdit, finishLaneEdit })(LaneContainer)

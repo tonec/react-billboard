@@ -1,15 +1,15 @@
-import { LANE_DELETED, STORY_ADDED } from './types'
+import { DELETE_LANE, STORY_ADDED } from './types'
 
 export const laneDeleted = (id) => {
   return {
-    type: LANE_DELETED,
+    type: DELETE_LANE,
     payload: id
   }
 }
 
-export const storyAdded = (id) => {
+export const storyAdded = (addedStory) => {
   return {
     type: STORY_ADDED,
-    payload: id
+    payload: addedStory
   }
 }

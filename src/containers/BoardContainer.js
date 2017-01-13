@@ -35,8 +35,13 @@ export class BoardContainer extends Component {
 
 const mapStateToProps = ({ lane }) => {
   return {
-    lanes: lane.lanes
+    lanes: stackedLanesSelector(lane.byId)
   }
+}
+
+function stackedLanesSelector (lanesById) {
+  const lanes = Object.keys(lanesById).map(id => lanesById[id])
+  return lanes
 }
 
 export default compose(

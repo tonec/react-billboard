@@ -1,5 +1,5 @@
 import {
-  LANE_ADDED,
+  ADD_LANE,
   FETCH_LANES_START,
   FETCH_LANES_SUCCESS,
   FETCH_LANES_FAILURE
@@ -7,7 +7,7 @@ import {
 
 export const laneAdded = (id) => {
   return {
-    type: LANE_ADDED,
+    type: ADD_LANE,
     payload: id
   }
 }

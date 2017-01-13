@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import {
-  LANE_ADDED,
-  LANE_DELETED,
+  ADD_LANE,
+  DELETE_LANE,
   ENABLE_LANE_EDIT,
   FINISH_LANE_EDIT,
   STORY_ADDED
@@ -14,12 +14,26 @@ describe('LaneReducer', () => {
 
   beforeEach(() => {
     initialState = {
-      lanes: [
-        { id: '1', name: 'Lane 1', editing: false, storyIds: ['1', '2'] },
-        { id: '2', name: 'Lane 2', editing: false, storyIds: ['3'] },
-        { id: '3', name: 'Lane 3', editing: false, storyIds: [] },
-        { id: '4', name: 'Lane 4', editing: false, storyIds: [] }
-      ]
+      'byId': {
+        '1': {
+           'id': '1',
+           'name': 'Lane 1',
+           'editing': false,
+           'storyIds': [ '2' ]
+        },
+        '2': {
+           'id': '2',
+           'name': 'Lane 2',
+           'editing': false,
+           'storyIds': [ '3' ]
+        },
+        '3': {
+           'id': '3',
+           'name': 'Lane 3',
+           'editing': false,
+           'storyIds': []
+        }
+      }
     }
   })
 
@@ -29,28 +43,60 @@ describe('LaneReducer', () => {
 
   it('should handle lane addition', () => {
     const action = {
-      type: LANE_ADDED,
+      type: ADD_LANE,
       payload: { id: '22', name: 'New lane', storyIds: [] }
     }
     const expectedState = {
-      lanes: [
-        { id: '22', name: 'New lane', storyIds: [] }
-      ]
+      'byId': {
+        '1': {
+           'id': '1',
+           'name': 'Lane 1',
+           'editing': false,
+           'storyIds': [ '2' ]
+        },
+        '2': {
+           'id': '2',
+           'name': 'Lane 2',
+           'editing': false,
+           'storyIds': [ '3' ]
+        },
+        '3': {
+           'id': '3',
+           'name': 'Lane 3',
+           'editing': false,
+           'storyIds': []
+        },
+        '22': {
+          'id': '22',
+          'name': 'New lane',
+          'storyIds': []
+        }
+      }
     }
-    expect(LaneReducer({ lanes: [] }, action)).to.deep.equal(expectedState)
+
+    expect(LaneReducer({}, action)).to.deep.equal(expectedState)
   })
 
   it('should handle lane deletion', () => {
     const action = {
-      type: LANE_DELETED,
+      type: DELETE_LANE,
       payload: '1'
     }
     const expectedState = {
-      lanes: [
-        { id: '2', name: 'Lane 2', editing: false, storyIds: ['3'] },
-        { id: '3', name: 'Lane 3', editing: false, storyIds: [] },
-        { id: '4', name: 'Lane 4', editing: false, storyIds: [] }
-      ]
+      'byId': {
+        '2': {
+           'id': '2',
+           'name': 'Lane 2',
+           'editing': false,
+           'storyIds': [ '3' ]
+        },
+        '3': {
+           'id': '3',
+           'name': 'Lane 3',
+           'editing': false,
+           'storyIds': []
+        }
+      }
     }
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
   })
@@ -63,12 +109,26 @@ describe('LaneReducer', () => {
       }
     }
     const expectedState = {
-      lanes: [
-        { id: '1', name: 'Lane 1', editing: false, storyIds: ['1', '2'] },
-        { id: '2', name: 'Lane 2', editing: true, storyIds: ['3'] },
-        { id: '3', name: 'Lane 3', editing: false, storyIds: [] },
-        { id: '4', name: 'Lane 4', editing: false, storyIds: [] }
-      ]
+      'byId': {
+        '1': {
+           'id': '1',
+           'name': 'Lane 1',
+           'editing': false,
+           'storyIds': [ '2' ]
+        },
+        '2': {
+           'id': '2',
+           'name': 'Lane 2',
+           'editing': true,
+           'storyIds': [ '3' ]
+        },
+        '3': {
+           'id': '3',
+           'name': 'Lane 3',
+           'editing': false,
+           'storyIds': []
+        }
+      }
     }
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
   })
@@ -82,14 +142,24 @@ describe('LaneReducer', () => {
       }
     }
     const initialState = {
-      lanes: [
-        { id: '1', name: 'Lane 1', editing: true }
-      ]
+      'byId': {
+        '1': {
+           'id': '1',
+           'name': 'Lane 1',
+           'editing': true,
+           'storyIds': [ '2' ]
+        }
+      }
     }
     const expectedState = {
-      lanes: [
-        { id: '1', name: 'New name', editing: false }
-      ]
+      'byId': {
+        '1': {
+           'id': '1',
+           'name': 'New name',
+           'editing': false,
+           'storyIds': [ '2' ]
+        }
+      }
     }
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
   })
@@ -102,14 +172,14 @@ describe('LaneReducer', () => {
       }
     }
     const initialState = {
-      lanes: [
-        { id: '1', name: 'Lane 1', editing: false, storyIds: ['1', '2'] }
-      ]
+      'byId': {
+        '1': { id: '1', name: 'Lane 1', editing: false, storyIds: ['1', '2'] }
+      }
     }
     const expectedState = {
-      lanes: [
-        { id: '1', name: 'Lane 1', editing: false, storyIds: ['1', '2', '111'] }
-      ]
+      'byId': {
+        '1': { id: '1', name: 'Lane 1', editing: false, storyIds: ['1', '2', '111'] }
+      }
     }
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
   })
