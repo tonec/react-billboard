@@ -1,6 +1,9 @@
 import { expect } from 'chai'
-import { laneDeleted, storyAdded } from '../LaneToolbarActions'
-import { DELETE_LANE, STORY_ADDED } from '../types'
+import { laneDeleted, addStory } from '../LaneToolbarActions'
+import {
+  DELETE_LANE,
+  ADD_STORY
+} from '../types'
 
 describe('BoardActions', () => {
 
@@ -16,10 +19,10 @@ describe('BoardActions', () => {
   it('should create an action to add a story', () => {
     const id = 22
     const expectedAction = {
-      type: STORY_ADDED,
+      type: ADD_STORY,
       payload: id
     }
-    expect(storyAdded(id)).to.deep.equal(expectedAction)
+    expect(addStory(id)).to.deep.equal(expectedAction)
   })
 
 })

@@ -24,6 +24,7 @@ export class BoardContainer extends Component {
   }
 
   render () {
+    console.log('Board: ', this)
     return (
       <Board
         addLane={this.onAddLane}
@@ -33,8 +34,9 @@ export class BoardContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ lane }) => {
+const mapStateToProps = ({ board, lane }) => {
   return {
+    addStoryModal: board.addStoryModal,
     lanes: stackedLanesSelector(lane.byId)
   }
 }

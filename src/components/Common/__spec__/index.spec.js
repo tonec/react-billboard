@@ -1,6 +1,11 @@
 import { expect } from 'chai'
 
-import { Box, EditableInline, EditInline } from '../'
+import {
+  Box,
+  EditableInline,
+  EditInline
+} from '../'
+
 import BoxComponent from '../Box'
 import EditableInlineComponent from '../EditableInline'
 import EditInlineComponent from '../EditInline'

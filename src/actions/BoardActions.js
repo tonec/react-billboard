@@ -1,5 +1,6 @@
 import {
   ADD_LANE,
+  CLOSE_MODAL,
   FETCH_LANES_START,
   FETCH_LANES_SUCCESS,
   FETCH_LANES_FAILURE
@@ -31,4 +32,10 @@ export const fetchBoardFailure = (error) => {
     payload: error
   }
 
+}
+
+export const closeModal = () => {
+  return {
+    type: CLOSE_MODAL
+  }
 }

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
 import LaneToolbar from '../components/Lane/LaneToolbar'
-import { storyAdded, laneDeleted } from '../actions/LaneToolbarActions'
+import { addStory, laneDeleted } from '../actions/LaneToolbarActions'
 
 class LaneToolbarContainer extends Component {
 
@@ -20,11 +20,12 @@ class LaneToolbarContainer extends Component {
   }
 
   onAddStory () {
-    this.props.storyAdded({
-      id: uuid.v4(),
-      title: 'New title',
-      laneId: this.props.laneId
-    })
+    this.props.addStory(this.props.laneId)
+    // this.props.storyAdded({
+    //   id: uuid.v4(),
+    //   title: 'New title',
+    //   laneId: this.props.laneId
+    // })
   }
 
   render () {
@@ -43,4 +44,4 @@ LaneToolbarContainer.propTypes = {
   storyLength: PropTypes.number.isRequired
 }
 
-export default connect(null, { storyAdded, laneDeleted })(LaneToolbarContainer)
+export default connect(null, { addStory, laneDeleted })(LaneToolbarContainer)

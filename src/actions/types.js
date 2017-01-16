@@ -12,4 +12,8 @@ export const ENABLE_LANE_EDIT = 'ENABLE_LANE_EDIT'
 export const FINISH_LANE_EDIT = 'FINISH_LANE_EDIT'
 export const STORY_DROPPED = 'STORY_DROPPED'
 
+export const ADD_STORY = 'ADD_STORY'
 export const STORY_ADDED = 'STORY_ADDED'
+
+export const OPEN_MODAL = 'CLOSE_MODAL'
+export const CLOSE_MODAL = 'CLOSE_MODAL'

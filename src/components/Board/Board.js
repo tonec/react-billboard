@@ -1,7 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import LaneContainer from '../../containers/LaneContainer'
+import Modal from '../../components/Modal/Modal'
 
 class Board extends Component {
+
+  renderModal () {
+    if (this.props.addStoryModal && this.props.addStoryModal.open) {
+      return (
+        <Modal>
+          <h1>Modalllll</h1>
+        </Modal>
+      )
+    }
+    return null
+  }
 
   render () {
     const { addLane, lanes } = this.props
@@ -29,6 +41,8 @@ class Board extends Component {
             )
           })}
         </div>
+
+        {this.renderModal()}
 
       </div>
     )
