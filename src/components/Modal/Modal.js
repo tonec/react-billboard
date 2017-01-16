@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import cx from 'classnames'
 import { hideModal } from '../../actions/ModalActions'
 import LayeredComponentHOC from './LayeredComponentHOC'
 
 import { ADD_STORY_MODAL } from '../../actions/types'
 
+import ModalHeader from './ModalHeader'
+import ModalFooter from './ModalFooter'
 import AddStoryModal from './AddStoryModal'
 
 const MODAL_COMPONENTS = {
@@ -42,24 +43,13 @@ class Modal extends Component {
           <div className='modal-dialog' role='document'>
             <div className='modal-content'>
 
-              <div className='modal-header'>
-                <button type='button' className='close' aria-label='Close'
-                  onClick={this.handleClose}
-                >X</button>
-                <h4 className='modal-title'>{modal.modalProps.title}</h4>
-              </div>
+              <ModalHeader modal={modal} handleClose={this.handleClose} />
 
               <div className='modal-body'>
-                <ModalContentToRender { ...modal }/>
+                <ModalContentToRender modal={modal} />
               </div>
 
-              <div className='modal-footer'>
-                <button
-                  type='button' className={cx('btn', 'btn-secondary')} data-dismiss='modal'
-                  onClick={this.handleClose}
-                >Close</button>
-                <button type='button' className={cx('btn', 'btn-primary')}>Save changes</button>
-              </div>
+              <ModalFooter model={modal} handleClose={this.handleClose} />
 
             </div>
           </div>
