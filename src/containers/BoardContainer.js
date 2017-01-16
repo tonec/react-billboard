@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import uuid from 'uuid'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
-import { laneAdded } from '../actions/BoardActions'
+import { addLaneAction } from '../actions/BoardActions'
 import Board from '../components/Board/Board'
 
 export class BoardContainer extends Component {
@@ -16,7 +16,7 @@ export class BoardContainer extends Component {
   }
 
   onAddLane () {
-    this.props.laneAdded({
+    this.props.addLaneAction({
       id: uuid.v4(),
       name: 'New lane',
       storyIds: []
@@ -24,7 +24,6 @@ export class BoardContainer extends Component {
   }
 
   render () {
-    console.log('Board: ', this)
     return (
       <Board
         addLane={this.onAddLane}
@@ -34,9 +33,9 @@ export class BoardContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ board, lane }) => {
+const mapStateToProps = ({ modal, lane }) => {
   return {
-    addStoryModal: board.addStoryModal,
+    modal: modal,
     lanes: stackedLanesSelector(lane.byId)
   }
 }
@@ -48,5 +47,5 @@ function stackedLanesSelector (lanesById) {
 
 export default compose(
   DragDropContext(HTML5Backend),
-  connect(mapStateToProps, { laneAdded })
+  connect(mapStateToProps, { addLaneAction })
 )(BoardContainer)

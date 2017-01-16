@@ -1,10 +1,7 @@
 import {
   ENABLE_LANE_EDIT,
   FINISH_LANE_EDIT,
-  STORY_DROPPED,
-  FETCH_STORIES,
-  FETCH_STORIES_SUCCESS,
-  FETCH_STORIES_FAILURE
+  STORY_DROPPED
 } from './types'
 
 export const enableLaneEdit = (laneId) => {

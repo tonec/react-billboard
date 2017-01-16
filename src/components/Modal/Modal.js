@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import cx from 'classnames'
+import { hideModal } from '../../actions/ModalActions'
 import LayeredComponentHOC from './LayeredComponentHOC'
 
-import { closeModal } from '../../actions/BoardActions'
+import { ADD_STORY_MODAL } from '../../actions/types'
+
+import AddStoryModal from './AddStoryModal'
+
+const MODAL_COMPONENTS = {
+  [ADD_STORY_MODAL]: AddStoryModal
+}
 
 class Modal extends Component {
 
@@ -15,28 +21,60 @@ class Modal extends Component {
   }
 
   handleClick () {
-    this.props.closeModal()
+    this.props.hideModal()
   }
 
   render () {
+    let ModalToRender
+
+    if (!this.props.modal.modalType) {
+      return null
+    }
+
+    ModalToRender = MODAL_COMPONENTS[this.props.modal.modalType]
 
     return (
-      <div className='modal'>
-        <div className='modal-header'>
-          <button
-            className={cx('btn', 'btn-danger', 'pull-right')}
-            onClick={this.handleClick}
-          >X</button>
-        </div>
-        <div className='modal-content'>
-          {this.props.children}
+      <div>
+
+        <div className='modal-backdrop'></div>
+
+        <div className='modal' tabIndex='-1' role='dialog'>
+          <div className='modal-dialog' role='document'>
+            <div className='modal-content'>
+
+              <div className='modal-header'>
+                <button
+                  className='close'
+                  onClick={this.handleClick}
+                  aria-label='Close'
+                >X</button>
+
+                <h4 className="modal-title">{this.props.modal.modalProps.title}</h4>
+
+              </div>
+
+              <div className="modal-body">
+                <ModalToRender />
+              </div>
+
+              <div className="modal-footer">
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
   }
 }
 
+const mapStateToProps = ({ modal }) => {
+  return {
+    modal
+  }
+}
+
 export default compose(
   LayeredComponentHOC,
-  connect(undefined, { closeModal })
+  connect(mapStateToProps, { hideModal })
 )(Modal)

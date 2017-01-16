@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { laneAdded } from '../BoardActions'
+import { addLaneAction } from '../BoardActions'
 import {
   ADD_LANE
 } from '../types'
@@ -12,7 +12,7 @@ describe('BoardActions', () => {
       type: ADD_LANE,
       payload: id
     }
-    expect(laneAdded(id)).to.deep.equal(expectedAction)
+    expect(addLaneAction(id)).to.deep.equal(expectedAction)
   })
 
 })

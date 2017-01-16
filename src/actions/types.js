@@ -1,3 +1,5 @@
+// Action Types
+
 export const FETCH_LANES_START = 'FETCH_LANES_START'
 export const FETCH_LANES_SUCCESS = 'FETCH_LANES_SUCCESS'
 export const FETCH_LANES_FAILURE = 'FETCH_LANES_FAILURE'
@@ -12,8 +14,10 @@ export const ENABLE_LANE_EDIT = 'ENABLE_LANE_EDIT'
 export const FINISH_LANE_EDIT = 'FINISH_LANE_EDIT'
 export const STORY_DROPPED = 'STORY_DROPPED'
 
-export const ADD_STORY = 'ADD_STORY'
 export const STORY_ADDED = 'STORY_ADDED'
 
-export const OPEN_MODAL = 'CLOSE_MODAL'
-export const CLOSE_MODAL = 'CLOSE_MODAL'
+export const SHOW_MODAL = 'SHOW_MODAL'
+export const HIDE_MODAL = 'HIDE_MODAL'
+
+// Modal Types
+export const ADD_STORY_MODAL = 'ADD_STORY_MODAL'

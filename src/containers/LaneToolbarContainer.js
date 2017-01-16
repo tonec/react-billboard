@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import uuid from 'uuid'
+import { ADD_STORY_MODAL } from '../actions/types'
 import LaneToolbar from '../components/Lane/LaneToolbar'
-import { addStory, laneDeleted } from '../actions/LaneToolbarActions'
+import { showModal } from '../actions/ModalActions'
+import { laneDeleted } from '../actions/LaneToolbarActions'
 
 class LaneToolbarContainer extends Component {
 
@@ -20,12 +21,13 @@ class LaneToolbarContainer extends Component {
   }
 
   onAddStory () {
-    this.props.addStory(this.props.laneId)
-    // this.props.storyAdded({
-    //   id: uuid.v4(),
-    //   title: 'New title',
-    //   laneId: this.props.laneId
-    // })
+    this.props.showModal({
+      modalType: ADD_STORY_MODAL,
+      modalProps: {
+        title: 'Add story',
+        laneId: this.props.laneId
+      }
+    })
   }
 
   render () {
@@ -44,4 +46,4 @@ LaneToolbarContainer.propTypes = {
   storyLength: PropTypes.number.isRequired
 }
 
-export default connect(null, { addStory, laneDeleted })(LaneToolbarContainer)
+export default connect(null, { laneDeleted, showModal })(LaneToolbarContainer)

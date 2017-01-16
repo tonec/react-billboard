@@ -32,7 +32,7 @@ const INITIAL_STATE = {
 
 const lanesById = (state = INITIAL_STATE, action) => {
   const { payload } = action
-  
+
   switch (action.type) {
 
     case ADD_LANE:

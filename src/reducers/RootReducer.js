@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import BoardReducer from './BoardReducer'
+import ModalReducer from './ModalReducer'
 import LaneReducer from './LaneReducer'
 import StoryReducer from './StoryReducer'
 
 const rootReducer = combineReducers({
-  board: BoardReducer,
+  modal: ModalReducer,
   lane: LaneReducer,
   story: StoryReducer
 })

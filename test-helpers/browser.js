@@ -18,5 +18,5 @@ try {
     userAgent: 'node.js'
   }
 } catch (error) {
-  console.log('jsdom not supported')
+  console.warning('jsdom not supported')
 }

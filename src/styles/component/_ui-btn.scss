@@ -2,30 +2,42 @@
 // Component: Button
 // ==========================================================================
 
-btn {
-  border-radius: 4px;
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
 
-  .primary {
+  .btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4
+  }
+
+  .btn-secondary {
 
   }
 
-  .secondary {
+  .btn-success {
 
   }
 
-  .success {
+  .btn-info {
 
   }
 
-  .info {
+  .btn-warning {
 
   }
 
-  .warning {
-
-  }
-
-  .danger {
-
+  .btn-danger  {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925
   }
