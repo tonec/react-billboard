@@ -22,7 +22,7 @@ class Modal extends Component {
   }
 
   handleClose () {
-    this.props.hideModal()
+    this.props.dispatch(hideModal())
   }
 
   render () {
@@ -89,5 +89,5 @@ const mapStateToProps = ({ modal }) => {
 
 export default compose(
   LayeredComponentHOC,
-  connect(mapStateToProps, { hideModal })
+  connect(mapStateToProps)
 )(Modal)
