@@ -25,13 +25,13 @@ class Modal extends Component {
   }
 
   render () {
-    let ModalToRender
+    let ModalContentToRender
 
     if (!this.props.modal.modalType) {
       return null
     }
 
-    ModalToRender = MODAL_COMPONENTS[this.props.modal.modalType]
+    ModalContentToRender = MODAL_COMPONENTS[this.props.modal.modalType]
 
     return (
       <div>
@@ -54,11 +54,12 @@ class Modal extends Component {
               </div>
 
               <div className="modal-body">
-                <ModalToRender />
+                <ModalContentToRender />
               </div>
 
               <div className="modal-footer">
-
+                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
