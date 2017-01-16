@@ -6,14 +6,6 @@ import Layer from './Layer'
 const layeredComponentHOC = (WrappedComponent) => {
   return class extends Component {
 
-    componentDidMount () {
-      this._renderLayer()
-    }
-
-    componentWillUnmount () {
-      this._layer._removeMountPoint()
-    }
-
     _renderLayer () {
       this._layer = new Layer(document.body, () => this._wrappedComponent)
       this._layer.render()
@@ -30,6 +22,14 @@ const layeredComponentHOC = (WrappedComponent) => {
     render () {
       this._wrappedComponent = this._renderComponent(WrappedComponent)
       return null
+    }
+
+    componentDidMount () {
+      this._renderLayer()
+    }
+
+    componentWillUnmount () {
+      this._layer._removeMountPoint()
     }
   }
 }
