@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import cx from 'classnames'
@@ -67,6 +67,18 @@ class Modal extends Component {
       </div>
     )
   }
+}
+
+Modal.propTypes = {
+  modal: PropTypes.shape({
+    modalType: PropTypes.string,
+    modalProps: PropTypes.shape({
+      title: PropTypes.string,
+      hasSubmit: PropTypes.bool,
+      submitBtnText: PropTypes.string,
+      onSubmitAction: PropTypes.string
+    })
+  })
 }
 
 const mapStateToProps = ({ modal }) => {

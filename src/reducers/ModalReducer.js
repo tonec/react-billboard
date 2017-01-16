@@ -5,7 +5,12 @@ import {
 
 const INITIAL_STATE = {
   modalType: null,
-  modalProps: {}
+  modalProps: {
+    title: '',
+    hasSubmit: false,
+    submitBtnText: 'Submit',
+    onSubmitAction: ''
+  }
 }
 
 const ModalReducer = (state = INITIAL_STATE, action) => {
