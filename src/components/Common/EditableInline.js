@@ -10,12 +10,12 @@ export default (props) => {
   }
 
   return (
-    <div
+    <a
       className='editable'
       tabIndex='0'
       onClick={props.handleClick.bind(this, props.laneId)}
     >
       {props.children}
-    </div>
+    </a>
   )
 }
