@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import cx from 'classnames'
 import { hideModal } from '../../actions/ModalActions'
 import LayeredComponentHOC from './LayeredComponentHOC'
 
@@ -17,21 +18,20 @@ class Modal extends Component {
   constructor (props) {
     super(props)
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClose = this.handleClose.bind(this)
   }
 
-  handleClick () {
+  handleClose () {
     this.props.hideModal()
   }
 
   render () {
-    let ModalContentToRender
+    const { modal } = this.props
+    const ModalContentToRender = MODAL_COMPONENTS[modal.modalType]
 
-    if (!this.props.modal.modalType) {
+    if (!modal.modalType) {
       return null
     }
-
-    ModalContentToRender = MODAL_COMPONENTS[this.props.modal.modalType]
 
     return (
       <div>
@@ -43,24 +43,24 @@ class Modal extends Component {
             <div className='modal-content'>
 
               <div className='modal-header'>
-                <button
-                  className='close'
-                  onClick={this.handleClick}
-                  aria-label='Close'
+                <button type='button' className='close' aria-label='Close'
+                  onClick={this.handleClose}
                 >X</button>
-
-                <h4 className="modal-title">{this.props.modal.modalProps.title}</h4>
-
+                <h4 className='modal-title'>{modal.modalProps.title}</h4>
               </div>
 
-              <div className="modal-body">
-                <ModalContentToRender />
+              <div className='modal-body'>
+                <ModalContentToRender { ...modal }/>
               </div>
 
-              <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
+              <div className='modal-footer'>
+                <button
+                  type='button' className={cx('btn', 'btn-secondary')} data-dismiss='modal'
+                  onClick={this.handleClose}
+                >Close</button>
+                <button type='button' className={cx('btn', 'btn-primary')}>Save changes</button>
               </div>
+
             </div>
           </div>
         </div>
