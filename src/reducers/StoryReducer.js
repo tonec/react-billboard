@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 import {
-  STORY_ADDED,
+  SAVE_STORY,
   FETCH_STORIES,
   FETCH_STORIES_SUCCESS,
   FETCH_STORIES_FAILURE
@@ -27,10 +27,10 @@ const INITIAL_STATE = {
 
 const storiesById = (state = INITIAL_STATE, action) => {
   const { payload } = action
-  
+
   switch (action.type) {
 
-    case STORY_ADDED:
+    case SAVE_STORY:
       return {
         ...state,
         [payload.id]: payload

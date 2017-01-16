@@ -5,7 +5,7 @@ import {
   DELETE_LANE,
   ENABLE_LANE_EDIT,
   FINISH_LANE_EDIT,
-  STORY_ADDED,
+  SAVE_STORY,
   STORY_DROPPED
 } from '../actions/types'
 
@@ -62,7 +62,7 @@ const lanesById = (state = INITIAL_STATE, action) => {
         }
       }
 
-    case STORY_ADDED:
+    case SAVE_STORY:
       return {
         ...state,
         [payload.laneId]: {
