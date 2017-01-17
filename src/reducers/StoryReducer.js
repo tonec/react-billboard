@@ -1,10 +1,7 @@
 import { combineReducers } from 'redux'
 
 import {
-  SAVE_STORY,
-  FETCH_STORIES,
-  FETCH_STORIES_SUCCESS,
-  FETCH_STORIES_FAILURE
+  SAVE_STORY
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -35,15 +32,6 @@ const storiesById = (state = INITIAL_STATE, action) => {
         ...state,
         [payload.id]: payload
       }
-
-    case FETCH_STORIES:
-      return { ...state }
-
-    case FETCH_STORIES_SUCCESS:
-      return { ...state }
-
-    case FETCH_STORIES_FAILURE:
-      return { ...state }
 
     default:
       return state
