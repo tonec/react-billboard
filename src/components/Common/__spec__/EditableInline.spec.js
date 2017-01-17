@@ -29,14 +29,14 @@ describe('<EditableInline />', () => {
       )
     })
 
-    it('should contain a div with the classname editable and tabindex of 0', () => {
-      expect(wrapper.find('div')).to.be.length(1)
-      expect(wrapper.find('div').hasClass('editable')).to.equal(true)
-      expect(wrapper.find('div').prop('tabIndex')).to.equal('0')
+    it('should contain an anchor tag with the classname editable and tabindex of 0', () => {
+      expect(wrapper.find('a')).to.be.length(1)
+      expect(wrapper.find('a').hasClass('editable')).to.equal(true)
+      expect(wrapper.find('a').prop('tabIndex')).to.equal('0')
     })
 
     it('should handle an onClick with the handler passed in as a prop', () => {
-      wrapper.find('div').simulate('click')
+      wrapper.find('a').simulate('click')
       expect(callback.calledOnce).to.equal(true)
     })
 

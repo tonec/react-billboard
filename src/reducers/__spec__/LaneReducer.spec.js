@@ -4,7 +4,7 @@ import {
   DELETE_LANE,
   ENABLE_LANE_EDIT,
   FINISH_LANE_EDIT,
-  STORY_ADDED
+  SAVE_STORY
 } from '../../actions/types'
 import LaneReducer from '../LaneReducer'
 
@@ -166,7 +166,7 @@ describe('LaneReducer', () => {
 
   it('should handle story added', () => {
     const action = {
-      type: STORY_ADDED,
+      type: SAVE_STORY,
       payload: {
         id: '111', title: 'New title', laneId: '1'
       }

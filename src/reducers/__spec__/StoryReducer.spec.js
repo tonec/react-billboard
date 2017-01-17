@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import {
-  STORY_ADDED
+  SAVE_STORY
 } from '../../actions/types'
 import StoryReducer from '../StoryReducer'
 
@@ -24,7 +24,7 @@ describe('StoryReducer', () => {
 
   it('should handle a story being added', () => {
     const action = {
-      type: STORY_ADDED,
+      type: SAVE_STORY,
       payload: {
         id: '111',
         title: 'New title'
