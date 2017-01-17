@@ -34,6 +34,12 @@ class Modal extends Component {
       return null
     }
 
+    let footer
+
+    if (modal.modalProps.hasSubmit) {
+      footer = <ModalFooter modal={modal} handleClose={this.handleClose} />
+    }
+
     return (
       <div>
 
@@ -49,7 +55,7 @@ class Modal extends Component {
                 <ModalContentToRender modal={modal} />
               </div>
 
-              <ModalFooter model={modal} handleClose={this.handleClose} />
+              {footer}
 
             </div>
           </div>

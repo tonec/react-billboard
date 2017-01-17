@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { ADD_STORY_MODAL } from '../actions/types'
+import { ADD_STORY_MODAL, SAVE_STORY } from '../actions/types'
 import LaneToolbar from '../components/Lane/LaneToolbar'
 import { showModal } from '../actions/ModalActions'
 import { laneDeleted } from '../actions/LaneToolbarActions'
@@ -25,6 +25,9 @@ class LaneToolbarContainer extends Component {
       modalType: ADD_STORY_MODAL,
       modalProps: {
         title: 'Add story',
+        hasSubmit: true,
+        submitBtnText: 'Submit',
+        onSubmitAction: SAVE_STORY,
         laneId: this.props.laneId
       }
     })
