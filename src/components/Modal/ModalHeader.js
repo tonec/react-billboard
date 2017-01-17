@@ -6,7 +6,7 @@ const ModalHeader = (props) => {
       <button type='button' className='close' aria-label='Close'
         onClick={props.handleClose}
       >X</button>
-      <h4 className='modal-title'>{props.modal.modalProps.title}</h4>
+      <h4 className='modal-title'>{props.modal.modalProps.modalTitle}</h4>
     </div>
   )
 }

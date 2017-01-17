@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import uuid from 'uuid'
 import { hideModal } from '../../actions/ModalActions'
 import LayeredComponentHOC from './LayeredComponentHOC'
 
-import { ADD_STORY_MODAL } from '../../actions/types'
+import { ADD_STORY_MODAL, HIDE_MODAL } from '../../actions/types'
 
 import ModalHeader from './ModalHeader'
 import ModalFooter from './ModalFooter'
@@ -19,11 +20,35 @@ class Modal extends Component {
   constructor (props) {
     super(props)
 
+    this.state = {}
+
     this.handleClose = this.handleClose.bind(this)
+    this.handleUpdate = this.handleUpdate.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleClose () {
     this.props.dispatch(hideModal())
+  }
+
+  handleUpdate (event) {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+  }
+
+  handleSubmit () {
+    this.props.dispatch({
+      type: this.props.modal.modalProps.onSubmitAction,
+      payload: {
+        ...this.state,
+        ...this.props.modal.modalProps,
+        id: uuid.v4()
+      }
+    })
+    this.props.dispatch({
+      type: HIDE_MODAL
+    })
   }
 
   render () {
@@ -37,7 +62,11 @@ class Modal extends Component {
     let footer
 
     if (modal.modalProps.hasSubmit) {
-      footer = <ModalFooter modal={modal} handleClose={this.handleClose} />
+      footer = <ModalFooter
+        modal={modal}
+        handleClose={this.handleClose}
+        handleSubmit={this.handleSubmit}
+      />
     }
 
     return (
@@ -52,7 +81,11 @@ class Modal extends Component {
               <ModalHeader modal={modal} handleClose={this.handleClose} />
 
               <div className='modal-body'>
-                <ModalContentToRender modal={modal} />
+                <ModalContentToRender
+                  state={this.state}
+                  modal={modal}
+                  onUpdate={this.handleUpdate}
+                />
               </div>
 
               {footer}

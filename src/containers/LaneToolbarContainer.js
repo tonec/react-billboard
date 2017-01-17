@@ -24,7 +24,7 @@ class LaneToolbarContainer extends Component {
     this.props.showModal({
       modalType: ADD_STORY_MODAL,
       modalProps: {
-        title: 'Add story',
+        modalTitle: 'Add story',
         hasSubmit: true,
         submitBtnText: 'Submit',
         onSubmitAction: SAVE_STORY,

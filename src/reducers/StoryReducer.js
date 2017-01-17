@@ -24,7 +24,6 @@ const INITIAL_STATE = {
 
 const storiesById = (state = INITIAL_STATE, action) => {
   const { payload } = action
-
   switch (action.type) {
 
     case SAVE_STORY:
