@@ -6,10 +6,7 @@ import {
 const INITIAL_STATE = {
   modalType: null,
   modalProps: {
-    title: '',
-    hasSubmit: false,
-    submitBtnText: 'Submit',
-    onSubmitAction: ''
+    title: ''
   }
 }
 

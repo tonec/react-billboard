@@ -5,6 +5,7 @@ import sinon from 'sinon'
 
 import Board from '../Board'
 import LaneContainer from '../../../containers/LaneContainer'
+import ModalContainer from '../../../containers/ModalContainer'
 
 function setup () {
   const props = {
@@ -43,6 +44,11 @@ describe('<Board />', () => {
   it('should render the LaneContainer for each lane in props', () => {
     const { wrapper } = setup()
     expect(wrapper.find(LaneContainer)).to.be.length(4)
+  })
+
+  it('should render the Modal component', () => {
+    const { wrapper } = setup()
+    expect(wrapper.find(ModalContainer)).to.be.length(1)
   })
 
 })

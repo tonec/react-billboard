@@ -1,61 +1,53 @@
-import React, { Component } from 'react'
+import React from 'react'
+import cx from 'classnames'
 
-class AddStoryModal extends Component {
+const AddStoryModal = (props) => {
+  return (
+    <div>
+      <form>
 
-  constructor (props) {
-    super(props)
+        <div className='form-group'>
+          <label htmlFor='title'>Title</label>
+          <input
+            type='text'
+            className='form-control'
+            id='title'
+            placeholder=''
+            autoFocus={true}
+            onChange={props.handleTitleChange}
+            value={props.title || ''}
+          />
+        </div>
 
-    this.handleTitleChange = this.handleTitleChange.bind(this)
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
-  }
+        <div className='form-group'>
+          <label htmlFor='description'>Description</label>
+          <input
+            type='text'
+            className='form-control'
+            id='description'
+            placeholder=''
+            autoFocus={false}
+            onChange={props.handleDescriptionChange}
+            value={props.description || ''}
+          />
+        </div>
 
-  handleTitleChange (event) {
-    this.setState({
-      title: event.target.value
-    })
-  }
+      </form>
 
-  handleDescriptionChange (event) {
-    this.setState({
-      description: event.target.value
-    })
-  }
+      <div className='modal-footer'>
 
-  render () {
-    return (
-      <div>
-        <form>
+        <button
+          type='button'
+          className={cx('btn', 'btn-primary')}
+          onClick={props.handleSubmit}
+        >
+          Save story
+        </button>
 
-          <div className='form-group'>
-            <label htmlFor='title'>Title</label>
-            <input
-              type='text'
-              className='form-control'
-              id='title'
-              placeholder=''
-              autoFocus={true}
-              onChange={this.props.onUpdate}
-              value={this.props.state.title || ''}
-            />
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='description'>Description</label>
-            <input
-              type='text'
-              className='form-control'
-              id='description'
-              placeholder=''
-              autoFocus={false}
-              onChange={this.props.onUpdate}
-              value={this.props.state.description || ''}
-            />
-          </div>
-
-        </form>
       </div>
-    )
-  }
+
+    </div>
+  )
 }
 
 export default AddStoryModal

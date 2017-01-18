@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import LaneContainer from '../../containers/LaneContainer'
-import Modal from '../../components/Modal/Modal'
+import ModalContainer from '../../containers/ModalContainer'
 
 class Board extends Component {
 
@@ -31,7 +31,7 @@ class Board extends Component {
           })}
         </div>
 
-        <Modal />
+        <ModalContainer />
 
       </div>
     )
