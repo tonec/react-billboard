@@ -7,6 +7,7 @@ import { saveState } from './storage/localStorage'
 import './styles/main.scss'
 
 const App = () => {
+  
   store.subscribe(() => {
     saveState(store.getState())
   })
