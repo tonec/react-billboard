@@ -24,17 +24,19 @@ function wrapInTestContext (DecoratedComponent) {
 function setup () {
   const store = mockStore(mockStoreData)
   const LaneContainerContext = wrapInTestContext(LaneContainer)
+  const props = {
+    storyIds: [1, 2],
+    name: 'Lane name',
+    laneId: '1'
+  }
   const wrapper = mount(
     <Provider store={store}>
-      <LaneContainerContext
-        storyIds={[1, 2]}
-        name={'Lane name'}
-        laneId={'1'}
-      />
+      <LaneContainerContext { ...props } />
     </Provider>
   )
 
   return {
+    props,
     wrapper
   }
 }

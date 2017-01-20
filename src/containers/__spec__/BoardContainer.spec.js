@@ -10,13 +10,17 @@ import Board from '../../components/Board/Board'
 
 function setup () {
   const store = mockStore(mockStoreData)
+  const props = {
+    lanes: []
+  }
   const wrapper = mount(
     <Provider store={store}>
-      <BoardContainer lanes={[]} />
+      <BoardContainer { ...props } />
     </Provider>
   )
 
   return {
+    props,
     wrapper
   }
 }
@@ -25,7 +29,7 @@ describe('<BoardContainer />', () => {
 
   it('should render Board', () => {
     const { wrapper } = setup()
-    
+
     expect(wrapper.find(Board)).to.be.length(1)
   })
 

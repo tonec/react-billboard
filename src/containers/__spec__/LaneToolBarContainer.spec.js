@@ -11,16 +11,18 @@ import LaneToolbar from '../../components/Lane/LaneToolbar'
 
 function setup () {
   const store = mockStore(mockStoreData)
+  const props = {
+    storyLength: 1,
+    laneId: '1'
+  }
   const wrapper = mount(
     <Provider store={store}>
-      <LaneToolbarContainer
-        storyLength={1}
-        laneId={'1'}
-      />
+      <LaneToolbarContainer { ...props } />
     </Provider>
   )
 
   return {
+    props,
     wrapper
   }
 }
