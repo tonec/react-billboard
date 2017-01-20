@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import ModalHeader from './ModalHeader'
 
 const Modal = (props) => {
@@ -23,6 +23,10 @@ const Modal = (props) => {
       </div>
     </div>
   )
+}
+
+Modal.propTypes = {
+  modal: PropTypes.object.isRequired
 }
 
 export default Modal
