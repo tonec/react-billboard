@@ -11,7 +11,7 @@ const AddStoryModal = (props) => {
           <input
             type='text'
             className='form-control'
-            id='title'
+            id='storyTitle'
             placeholder=''
             autoFocus={true}
             onChange={props.handleTitleChange}
@@ -24,7 +24,7 @@ const AddStoryModal = (props) => {
           <input
             type='text'
             className='form-control'
-            id='description'
+            id='storyDescription'
             placeholder=''
             autoFocus={false}
             onChange={props.handleDescriptionChange}
@@ -37,6 +37,7 @@ const AddStoryModal = (props) => {
       <div className='modal-footer'>
 
         <button
+          id='saveStory'
           type='submit'
           className={cx('btn', 'btn-primary')}
           onClick={props.handleSubmit}
