@@ -1,6 +1,14 @@
 import { expect } from 'chai'
-import { enableLaneEdit, finishLaneEdit } from '../LaneActions'
-import { ENABLE_LANE_EDIT, FINISH_LANE_EDIT } from '../types'
+import {
+  enableLaneEdit,
+  finishLaneEdit,
+  storyDropped
+} from '../LaneActions'
+import {
+  ENABLE_LANE_EDIT,
+  FINISH_LANE_EDIT,
+  STORY_DROPPED
+} from '../types'
 
 describe('LaneActions', () => {
 
@@ -23,6 +31,18 @@ describe('LaneActions', () => {
       payload: updatedLane
     }
     expect(finishLaneEdit(updatedLane)).to.deep.equal(expectedAction)
+  })
+
+  it('should create an action to signify a story being dropped into a lane', () => {
+    const droppedItem = {
+      newLaneId: '22',
+      storyId: '1'
+    }
+    const expectedAction = {
+      type: STORY_DROPPED,
+      payload: droppedItem
+    }
+    expect(storyDropped(droppedItem)).to.deep.equal(expectedAction)
   })
 
 })
