@@ -12,7 +12,7 @@ const ModalHeader = (props) => {
 }
 
 ModalHeader.propTypes = {
-  modal: PropTypes.object,
+  modal: PropTypes.object.isRequired,
   handleClose: PropTypes.func.isRequired
 }
 
