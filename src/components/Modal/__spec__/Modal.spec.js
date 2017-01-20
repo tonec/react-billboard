@@ -9,7 +9,7 @@ function setup () {
     modal: {},
     handleClose: () => {}
   }
-  const wrapper = shallow(<Modal { ...props } />)
+  const wrapper = shallow(<Modal { ...props }><span>Test text</span></Modal>)
 
   return {
     props,
@@ -31,4 +31,12 @@ describe('<Modal />', () => {
     expect(wrapper.find('.modal-body')).to.be.length(1)
     expect(wrapper.find(ModalHeader)).to.be.length(1)
   })
+
+  it('should render any child components with the modal-body section', () => {
+    const { wrapper } = setup()
+
+    expect(wrapper.find('.modal-body').find('span')).to.be.length(1)
+    expect(wrapper.find('.modal-body').find('span').text()).to.equal('Test text')
+  })
+
 })
