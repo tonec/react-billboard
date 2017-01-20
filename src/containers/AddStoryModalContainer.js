@@ -3,7 +3,7 @@ import uuid from 'uuid'
 import { HIDE_MODAL, SAVE_STORY } from '../actions/types'
 import AddStoryModal from '../components/Modal/AddStoryModal'
 
-class AddStoryModalContainer extends Component {
+export class AddStoryModalContainer extends Component {
 
   constructor (props) {
     super(props)
