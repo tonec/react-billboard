@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import cx from 'classnames'
 
 const AddStoryModal = (props) => {
@@ -6,7 +6,7 @@ const AddStoryModal = (props) => {
     <div>
       <form>
 
-        <div className='form-group'>
+        <div className='form-group form-input-title'>
           <label htmlFor='title'>Title</label>
           <input
             type='text'
@@ -19,7 +19,7 @@ const AddStoryModal = (props) => {
           />
         </div>
 
-        <div className='form-group'>
+        <div className='form-group form-input-description'>
           <label htmlFor='description'>Description</label>
           <input
             type='text'
@@ -37,7 +37,7 @@ const AddStoryModal = (props) => {
       <div className='modal-footer'>
 
         <button
-          type='button'
+          type='submit'
           className={cx('btn', 'btn-primary')}
           onClick={props.handleSubmit}
         >
@@ -48,6 +48,14 @@ const AddStoryModal = (props) => {
 
     </div>
   )
+}
+
+AddStoryModal.propTypes = {
+  handleTitleChange: PropTypes.func.isRequired,
+  handleDescriptionChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 }
 
 export default AddStoryModal
