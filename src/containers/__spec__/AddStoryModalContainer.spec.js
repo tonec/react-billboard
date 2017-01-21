@@ -12,9 +12,16 @@ import AddStoryModal from '../../components/Modal/AddStoryModal'
 
 function setup () {
   const store = mockStore(mockStoreData)
-  const props = {}
+  const props = {
+    modal: {
+      modalProps: {
+        laneId: '1'
+      }
+    }
+  }
+  const dispatch = sinon.spy()
   const wrapper = mount(
-    <AddStoryModalContainer { ...props } />
+    <AddStoryModalContainer { ...props } dispatch={dispatch} />
   )
 
   const connectedWrapper = mount(
@@ -25,6 +32,7 @@ function setup () {
 
   return {
     props,
+    dispatch,
     wrapper,
     connectedWrapper
   }
@@ -74,6 +82,39 @@ describe('<AddStoryModal />', () => {
     wrapper.find('#storyDescription').simulate('change')
 
     expect(handleDescriptionChange.callCount).to.equal(1)
+  })
+
+  it('should have a method to set the title in state', () => {
+    const { wrapper } = setup()
+    const instance = wrapper.instance()
+    const mockEvent = {
+      target: {
+        value: 'Test title'
+      }
+    }
+    instance.handleTitleChange(mockEvent)
+    expect(instance.state.title).to.equal(mockEvent.target.value)
+  })
+
+  it('should have a method to set the description in state', () => {
+    const { wrapper } = setup()
+    const instance = wrapper.instance()
+    const mockEvent = {
+      target: {
+        value: 'Test description'
+      }
+    }
+    instance.handleDescriptionChange(mockEvent)
+    expect(instance.state.description).to.equal(mockEvent.target.value)
+  })
+
+  it('should have a method to dispatch the SAVE_STORY event', () => {
+    const { wrapper, dispatch } = setup()
+    const instance = wrapper.instance()
+    instance.handleSubmit()
+
+    // Note: there are two calls to dispatch in this method
+    expect(dispatch.callCount).to.equal(2)
   })
 
 })
