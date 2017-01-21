@@ -26,8 +26,8 @@ export class BoardContainer extends Component {
   render () {
     return (
       <Board
-        addLane={this.onAddLane}
         { ...this.props }
+        addLane={this.onAddLane}
       />
     )
   }
