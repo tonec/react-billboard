@@ -1,4 +1,5 @@
 import { expect } from 'chai'
+
 import {
   ADD_LANE,
   DELETE_LANE,
@@ -6,6 +7,7 @@ import {
   FINISH_LANE_EDIT,
   SAVE_STORY
 } from '../../actions/types'
+
 import LaneReducer from '../LaneReducer'
 
 describe('LaneReducer', () => {
