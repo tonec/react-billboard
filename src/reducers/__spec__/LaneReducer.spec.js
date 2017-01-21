@@ -41,7 +41,7 @@ describe('LaneReducer', () => {
     expect(LaneReducer(undefined, {})).to.deep.equal(initialState)
   })
 
-  it('should handle lane addition', () => {
+  it('should handle ADD_LANE', () => {
     const action = {
       type: ADD_LANE,
       payload: { id: '22', name: 'New lane', storyIds: [] }
@@ -77,7 +77,7 @@ describe('LaneReducer', () => {
     expect(LaneReducer({}, action)).to.deep.equal(expectedState)
   })
 
-  it('should handle lane deletion', () => {
+  it('should handle DELETE_LANE', () => {
     const action = {
       type: DELETE_LANE,
       payload: '1'
@@ -101,7 +101,7 @@ describe('LaneReducer', () => {
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
   })
 
-  it('should handle enable lane editing', () => {
+  it('should handle ENABLE_LANE_EDIT', () => {
     const action = {
       type: ENABLE_LANE_EDIT,
       payload: {
@@ -133,7 +133,7 @@ describe('LaneReducer', () => {
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
   })
 
-  it('should handle finish lane editing', () => {
+  it('should handle FINISH_LANE_EDIT', () => {
     const action = {
       type: FINISH_LANE_EDIT,
       payload: {
@@ -164,7 +164,7 @@ describe('LaneReducer', () => {
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
   })
 
-  it('should handle story added', () => {
+  it('should handle SAVE_STORY', () => {
     const action = {
       type: SAVE_STORY,
       payload: {
@@ -182,6 +182,46 @@ describe('LaneReducer', () => {
       }
     }
     expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
+  })
+
+  it('should handle STORY_DROPPED with a new lane id correctly', () => {
+    const action = {
+      type: 'STORY_DROPPED',
+      payload: {
+        newLaneId: '2',
+        storyId: '123'
+      }
+    }
+    const initialState = {
+      'byId': {
+        '1': { id: '1', name: 'Lane 1', editing: false, storyIds: ['123'] },
+        '2': { id: '2', name: 'Lane 2', editing: false, storyIds: [] }
+      }
+    }
+    const expectedState = {
+      'byId': {
+        '1': { id: '1', name: 'Lane 1', editing: false, storyIds: [] },
+        '2': { id: '2', name: 'Lane 2', editing: false, storyIds: ['123'] }
+      }
+    }
+    expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
+  })
+
+  it('should handle STORY_DROPPED with the same lane correctly', () => {
+    const action = {
+      type: 'STORY_DROPPED',
+      payload: {
+        newLaneId: '1',
+        storyId: '123'
+      }
+    }
+    const initialState = {
+      'byId': {
+        '1': { id: '1', name: 'Lane 1', editing: false, storyIds: ['123'] },
+        '2': { id: '2', name: 'Lane 2', editing: false, storyIds: [] }
+      }
+    }
+    expect(LaneReducer(initialState, action)).to.deep.equal(initialState)
   })
 
 })
