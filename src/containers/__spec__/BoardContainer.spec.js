@@ -1,22 +1,19 @@
 import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
-import { Provider } from 'react-redux'
-import mockStore from '../../../test-helpers/mockStore'
-import mockStoreData from '../../../test-helpers/mockStoreData'
+import sinon from 'sinon'
 
 import { BoardContainer } from '../BoardContainer'
 import Board from '../../components/Board/Board'
 
 function setup () {
-  const store = mockStore(mockStoreData)
   const props = {
+    addLaneAction: sinon.spy(),
     lanes: []
   }
+
   const wrapper = mount(
-    <Provider store={store}>
-      <BoardContainer { ...props } />
-    </Provider>
+    <BoardContainer { ...props } />
   )
 
   return {
@@ -29,8 +26,16 @@ describe('<BoardContainer />', () => {
 
   it('should render Board', () => {
     const { wrapper } = setup()
-
     expect(wrapper.find(Board)).to.be.length(1)
+  })
+
+  it('should have a method to call the addLaneAction creator', () => {
+    const { props, wrapper } = setup()
+    const instance = wrapper.instance()
+
+    instance.onAddLane()
+    
+    expect(props.addLaneAction.calledOnce).to.equal(true)
   })
 
 })
