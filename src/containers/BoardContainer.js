@@ -7,7 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { addLaneAction } from '../actions/BoardActions'
 import Board from '../components/Board/Board'
 
-export class BoardContainer extends Component {
+class BoardContainer extends Component {
 
   constructor (props) {
     super(props)
@@ -45,6 +45,7 @@ function stackedLanesSelector (lanesById) {
   return lanes
 }
 
+export { BoardContainer }
 export default compose(
   DragDropContext(HTML5Backend),
   connect(mapStateToProps, { addLaneAction })

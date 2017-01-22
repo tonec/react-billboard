@@ -11,6 +11,7 @@ import AddStoryModalContainerConnected, { AddStoryModalContainer } from '../AddS
 import AddStoryModal from '../../components/Modal/AddStoryModal'
 
 function setup () {
+  const dispatch = sinon.spy()
   const store = mockStore(mockStoreData)
   const props = {
     modal: {
@@ -19,7 +20,7 @@ function setup () {
       }
     }
   }
-  const dispatch = sinon.spy()
+  
   const wrapper = mount(
     <AddStoryModalContainer { ...props } dispatch={dispatch} />
   )
