@@ -5,6 +5,6 @@ import rootReducer from '../reducers/RootReducer'
 import { loadState } from '../storage/localStorage'
 
 const persistedState = loadState()
-const store = createStore(rootReducer, {}, applyMiddleware(thunk, logger()))
+const store = createStore(rootReducer, persistedState, applyMiddleware(thunk, logger()))
 
 export default store
