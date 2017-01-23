@@ -6,12 +6,23 @@ import ItemTypes from '../../constants/ItemTypes'
 import { storyDropped } from '../../actions/LaneActions'
 
 const laneTarget = {
+
+  hover (props, monitor, component) {
+    // console.log('hover props', props)
+  },
+
   drop (props, monitor, component) {
     const droppedItem = {
       newLaneId: props.laneId,
-      storyId: monitor.getItem().storyId
+      dragStoryId: monitor.getItem().storyId,
+      dropTargetId: props.id
     }
-    props.dispatch(storyDropped(droppedItem))
+
+    // The target immediately below each story has the same id.
+    // If these match no change is position is needed.
+    if (droppedItem.dragStoryId !== droppedItem.dropTargetId) {
+      props.dispatch(storyDropped(droppedItem))
+    }
   }
 }
 

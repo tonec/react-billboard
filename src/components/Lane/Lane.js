@@ -15,20 +15,31 @@ const Lane = (props) => {
 
       <LaneHeader { ...props } />
 
-      <LaneDragTarget laneId={props.laneId}>
-        <div className='lane-body'>
-          { props.stories.map(story => {
-              return (
+      <div className='lane-body'>
+
+        <LaneDropTarget
+          id={null}
+          laneId={props.laneId}
+         />
+
+        { props.stories.map(story => {
+            return (
+              <div key={story.id}>
                 <Story
-                  key={story.id}
                   id={story.id}
                   title={story.title}
                   description={story.description}
                 />
-              )
-            })}
-        </div>
-      </LaneDragTarget>
+                <LaneDropTarget
+                  id={story.id}
+                  laneId={props.laneId}
+                  stories={props.stories}
+                />
+              </div>
+            )
+          })}
+
+      </div>
 
     </div>
   )
