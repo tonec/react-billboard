@@ -28,11 +28,11 @@ function wrapInTestContext (DecoratedComponent) {
 
 // TODO: Finish DnD tests
 
-describe('<LaneDragTarget />', () => {
+describe('<LaneDropTarget />', () => {
 
   it('uses correct opacity is applied before and after dragging begins', () => {
-    const LaneDragTargetContext = wrapInTestContext(LaneDragTarget)
-    const wrapper = mount(<LaneDragTargetContext />)
+    const LaneDropTargetContext = wrapInTestContext(LaneDropTarget)
+    const wrapper = mount(<LaneDropTargetContext />)
     const manager = wrapper.get(0).getManager()
     const backend = manager.getBackend()
     const monitor = manager.getMonitor()
