@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { DropTarget } from 'react-dnd'
+import cx from 'classnames'
 import ItemTypes from '../../constants/ItemTypes'
 import { storyDropped } from '../../actions/LaneActions'
 
 const laneTarget = {
-
-  hover (props, monitor, component) {
-    // console.log('hover props', props)
-  },
-
   drop (props, monitor, component) {
     const droppedItem = {
       newLaneId: props.laneId,
@@ -27,18 +23,28 @@ const laneTarget = {
 }
 
 function collect (connect, monitor) {
+
   return {
     connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
+    isOver: monitor.isOver(),
+    hoverItem: monitor.getItem()
   }
 }
 
 class LaneDropTarget extends Component {
   render () {
-    const { connectDropTarget, isOver } = this.props
+    const { connectDropTarget, hoverItem, id, storyIds } = this.props
+    let { isOver } = this.props
+
+    // Override isOver - set to false if the target is immediately above or below
+    if (isOver && hoverItem && storyIds) {
+      const hoverItemIndex = storyIds.indexOf(hoverItem.storyId)
+      const targetIdIndex = storyIds.indexOf(id)
+      isOver = hoverItem.storyId !== id && hoverItemIndex - 1 !== targetIdIndex
+    }
 
     return connectDropTarget(
-      <div className='drop-target' style={{ border: isOver ? '1px solid red' : 'none' }}>
+      <div className={cx(['drop-target', { 'is-over': isOver }])}>
         {this.props.children}
       </div>
     )

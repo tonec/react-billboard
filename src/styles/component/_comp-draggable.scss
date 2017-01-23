@@ -3,5 +3,12 @@
 // ==========================================================================
 
 .drop-target {
-  min-height: 20px;
+  height: 20px;
+  transition: all 0.1s ease-in;
+
+  &.is-over {
+    margin: 4px 2px;
+    height: 40px;
+    border: 2px dashed rgba(#75b9c2, 0.5)
+  }
 }

@@ -18,7 +18,7 @@ const Lane = (props) => {
       <div className='lane-body'>
 
         <LaneDropTarget
-          id={null}
+          id={props.laneId + '-top'}
           laneId={props.laneId}
          />
 
@@ -33,7 +33,7 @@ const Lane = (props) => {
                 <LaneDropTarget
                   id={story.id}
                   laneId={props.laneId}
-                  stories={props.stories}
+                  storyIds={props.storyIds}
                 />
               </div>
             )
