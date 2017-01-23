@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import Story from '../Story/Story'
 import LaneHeader from './LaneHeader'
 import LaneToolbarContainer from '../../containers/LaneToolbarContainer'
-import LaneDragTarget from './LaneDragTarget'
+import LaneDropTarget from './LaneDropTarget'
 
 const Lane = (props) => {
   return (

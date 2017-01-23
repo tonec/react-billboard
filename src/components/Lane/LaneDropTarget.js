@@ -22,7 +22,7 @@ function collect (connect, monitor) {
   }
 }
 
-class LaneDragTarget extends Component {
+class LaneDropTarget extends Component {
   render () {
     const { connectDropTarget, isOver } = this.props
 
@@ -37,4 +37,4 @@ class LaneDragTarget extends Component {
 export default compose(
   connect(),
   DropTarget(ItemTypes.STORY, laneTarget, collect)
-)(LaneDragTarget)
+)(LaneDropTarget)

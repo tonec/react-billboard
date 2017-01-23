@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import { Provider } from 'react-redux'
 import mockStore from '../../../../test-helpers/mockStore'
 import mockStoreData from '../../../../test-helpers/mockStoreData'
-import LaneDragTarget from '../LaneDragTarget'
+import LaneDropTarget from '../LaneDropTarget'
 import Story from '../../Story/Story'
 
 function wrapInTestContext (DecoratedComponent) {
