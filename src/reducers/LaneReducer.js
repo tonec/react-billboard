@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { Map, List } from 'immutable'
 
 import {
   ADD_LANE,
@@ -9,67 +10,47 @@ import {
   STORY_DROPPED
 } from '../actions/types'
 
-const INITIAL_STATE = {
-  '1': {
+const INITIAL_STATE = Map({
+  '1': Map({
      'id': '1',
      'name': 'Lane 1',
      'editing': false,
-     'storyIds': [ '1', '2' ]
-  },
-  '2': {
+     'storyIds': List([ '1', '2' ])
+  }),
+  '2': Map({
      'id': '2',
      'name': 'Lane 2',
      'editing': false,
-     'storyIds': [ '3' ]
-  },
-  '3': {
+     'storyIds': List([ '3' ])
+  }),
+  '3': Map({
      'id': '3',
      'name': 'Lane 3',
      'editing': false,
-     'storyIds': []
-  }
-}
+     'storyIds': List([])
+  })
+})
 
-const lanesById = (state = INITIAL_STATE, action) => {
+const LaneReducer = (state = INITIAL_STATE, action) => {
   const { payload } = action
 
   switch (action.type) {
 
     case ADD_LANE:
-      return { ...state, [payload.id]: payload }
+      return state.set(payload.id, Map(payload))
 
     case DELETE_LANE:
-      let newState = Object.assign({}, state)
-      delete newState[payload]
-      return newState
+      return state.delete(payload)
 
     case ENABLE_LANE_EDIT:
-      return {
-        ...state,
-        [payload.laneId]: {
-          ...state[payload.laneId],
-          editing: true
-        }
-      }
+      return state.updateIn([payload.laneId, 'editing'], editing => true)
 
     case FINISH_LANE_EDIT:
-      return {
-        ...state,
-        [payload.laneId]: {
-          ...state[payload.laneId],
-          name: payload.name,
-          editing: false
-        }
-      }
+      return state.updateIn([payload.laneId, 'editing'], editing => false)
+        .updateIn([payload.laneId, 'name'], name => payload.name)
 
     case SAVE_STORY:
-      return {
-        ...state,
-        [payload.laneId]: {
-          ...state[payload.laneId],
-          storyIds: state[payload.laneId].storyIds.concat([payload.id])
-        }
-      }
+      return state.updateIn([payload.laneId, 'storyIds'], storyIds => storyIds.push(payload.id))
 
     case STORY_DROPPED:
 
@@ -86,7 +67,7 @@ const lanesById = (state = INITIAL_STATE, action) => {
       const targetStoryIndexCurrentLane = state[currentLane].storyIds.indexOf(payload.dropTargetId)
       const targetStoryIndexNewLane = state[payload.newLaneId].storyIds.indexOf(payload.dropTargetId)
 
-      // No lane change rearrange the sories in the currentLane
+      // No lane change rearrange the stories in the currentLane
       if (currentLane === payload.newLaneId) {
 
         // Is the new position is directly above return with no changes
@@ -105,13 +86,14 @@ const lanesById = (state = INITIAL_STATE, action) => {
           storyIdsArray.splice(targetStoryIndexCurrentLane + 1, 0, payload.dragStoryId)
         }
 
-        return {
-          ...state,
-          [currentLane]: {
-            ...state[currentLane],
-            storyIds: storyIdsArray
-          }
-        }
+        return state.updateIn([currentLane, 'storyIds'], storyIds => storyIdsArray)
+        // return {
+        //   ...state,
+        //   [currentLane]: {
+        //     ...state[currentLane],
+        //     storyIds: storyIdsArray
+        //   }
+        // }
 
       } else {
 
@@ -150,10 +132,5 @@ const lanesById = (state = INITIAL_STATE, action) => {
       return state
   }
 }
-
-const LaneReducer = combineReducers({
-  byId: lanesById,
-  allIds: []
-})
 
 export default LaneReducer

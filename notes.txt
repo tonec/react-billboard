@@ -1,0 +1,7 @@
+
+Todos:
+
+Implement immutable.js in reducers
+Add Rewire is tests to prevent rendering of child components
+Use Reselect to make selectors more efficient.
+Use PureComponent to make rendering more efficient

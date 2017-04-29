@@ -36,13 +36,12 @@ class BoardContainer extends Component {
 const mapStateToProps = ({ modal, lane }) => {
   return {
     modal: modal,
-    lanes: stackedLanesSelector(lane.byId)
+    lanes: stackedLanesSelector(lane)
   }
 }
 
 function stackedLanesSelector (lanesById) {
-  const lanes = Object.keys(lanesById).map(id => lanesById[id])
-  return lanes
+  return Object.keys(lanesById.toJS()).map(id => lanesById.get(id)).map(map => map.toJS())
 }
 
 export { BoardContainer }

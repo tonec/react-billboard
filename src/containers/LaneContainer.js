@@ -34,7 +34,6 @@ class LaneContainer extends Component {
   }
 
   render () {
-
     return (
       <Lane
         { ...this.props }
@@ -61,8 +60,7 @@ const mapStateToProps = ({ story }) => {
 }
 
 function stackedStorySelector (storiesById) {
-  const lanes = Object.keys(storiesById).map(id => storiesById[id])
-  return lanes
+  return Object.keys(storiesById).map(id => storiesById[id])
 }
 
 export default connect(mapStateToProps, { enableLaneEdit, finishLaneEdit })(LaneContainer)
