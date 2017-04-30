@@ -97,38 +97,33 @@ describe('LaneReducer', () => {
     expect(LaneReducer(initialState, action).getIn(['1', 'storyIds'])).to.include('111')
   })
 
-  // it('should handle STORY_DROPPED with a new lane id correctly', () => {
-  //   const action = {
-  //     type: 'STORY_DROPPED',
-  //     payload: {
-  //       newLaneId: '2',
-  //       dragStoryId: '2',
-  //       dropTargetId: '3'
-  //     }
-  //   }
-  //   const expectedState = {
-  //       '1': { id: '1', name: 'Lane 1', editing: false, storyIds: [ '1' ] },
-  //       '2': { id: '2', name: 'Lane 2', editing: false, storyIds: [ '3', '2' ] }
-  //   }
-  //   expect(LaneReducer(initialState, action)).to.deep.equal(expectedState)
-  // })
-  //
-  // it('should handle STORY_DROPPED with the same lane correctly', () => {
-  //   const action = {
-  //     type: 'STORY_DROPPED',
-  //     payload: {
-  //       newLaneId: '1',
-  //       dragStoryId: '2',
-  //       dropTargetId: '1'
-  //     }
-  //   }
-  //   const initialState = {
-  //     'byId': {
-  //       '1': { id: '1', name: 'Lane 1', editing: false, storyIds: [ '1', '2' ] },
-  //       '2': { id: '2', name: 'Lane 2', editing: false, storyIds: [ '3' ] }
-  //     }
-  //   }
-  //   expect(LaneReducer(initialState, action)).to.deep.equal(initialState)
-  // })
+  it('should handle STORY_DROPPED with a new lane id correctly', () => {
+    const action = {
+      type: 'STORY_DROPPED',
+      payload: {
+        newLaneId: '2',
+        draggedStoryId: '2',
+        dropTargetId: '3'
+      }
+    }
+
+    expect(LaneReducer(initialState, action).getIn(['1', 'storyIds']).includes('2')).to.equal(false)
+    expect(LaneReducer(initialState, action).getIn(['2', 'storyIds'])).to.include('2')
+  })
+
+  it('should handle STORY_DROPPED with the same lane correctly', () => {
+    const action = {
+      type: 'STORY_DROPPED',
+      payload: {
+        newLaneId: '1',
+        draggedStoryId: '2',
+        dropTargetId: '1'
+      }
+    }
+
+    expect(LaneReducer(initialState, action).getIn(['1', 'storyIds'])).to.include('2')
+    expect(LaneReducer(initialState, action).getIn(['2', 'storyIds']).includes('2')).to.equal(false)
+
+  })
 
 })

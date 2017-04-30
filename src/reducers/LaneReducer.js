@@ -14,13 +14,13 @@ const INITIAL_STATE = fromJS({
      'id': '1',
      'name': 'Lane 1',
      'editing': false,
-     'storyIds': [ '1', '2' ]
+     'storyIds': [ '1', '2', '3' ]
   },
   '2': {
      'id': '2',
      'name': 'Lane 2',
      'editing': false,
-     'storyIds': [ '3' ]
+     'storyIds': []
   },
   '3': {
      'id': '3',
@@ -52,79 +52,52 @@ const LaneReducer = (state = INITIAL_STATE, action) => {
       return state.updateIn([payload.laneId, 'storyIds'], storyIds => storyIds.push(payload.id))
 
     case STORY_DROPPED:
-
-      let currentLane
+      const stateObject = state.toJS()
+      let draggedStoryPrevLane
 
       // Get the current lane
-      for (var item in state) {
-        if (state[item].storyIds.indexOf(payload.dragStoryId) !== -1) {
-          currentLane = item
+      for (var item in stateObject) {
+        if (stateObject[item].storyIds.indexOf(payload.draggedStoryId) !== -1) {
+          draggedStoryPrevLane = stateObject[item]
         }
       }
 
-      const dragStoryIndexCurrentLane = state[currentLane].storyIds.indexOf(payload.dragStoryId)
-      const targetStoryIndexCurrentLane = state[currentLane].storyIds.indexOf(payload.dropTargetId)
-      const targetStoryIndexNewLane = state[payload.newLaneId].storyIds.indexOf(payload.dropTargetId)
+      // Get the stories order index of the story within the previous lane
+      const draggedStoryIndexInPrevLane = stateObject[draggedStoryPrevLane.id].storyIds.indexOf(payload.draggedStoryId)
+
+      // Get the drop target index. If it's not being dropped in the same lane this will be -1
+      const targetStoryIndexInPrevLane = stateObject[draggedStoryPrevLane.id].storyIds.indexOf(payload.dropTargetId)
+
+      // Get the order index of the lane being dropped into. Will be -1 if dropped at the top or lane is empty
+      const targetStoryIndexNewLane = stateObject[payload.newLaneId].storyIds.indexOf(payload.dropTargetId)
 
       // No lane change rearrange the stories in the currentLane
-      if (currentLane === payload.newLaneId) {
+      if (draggedStoryPrevLane.id === payload.newLaneId) {
 
         // Is the new position is directly above return with no changes
-        if (dragStoryIndexCurrentLane - 1 === targetStoryIndexCurrentLane) {
-          return { ...state }
+        if (draggedStoryIndexInPrevLane - 1 === targetStoryIndexInPrevLane) {
+          return state
         }
 
-        // Remove from current lane and position
-        let storyIdsArray = [ ...state[currentLane].storyIds ]
-        storyIdsArray.splice(dragStoryIndexCurrentLane, 1)
-
-        // Add in the new position. If the targetIndex is falsy we assume it's the top
-        if (targetStoryIndexCurrentLane < 0) {
-          storyIdsArray.splice(0, 0, payload.dragStoryId)
-        } else {
-          storyIdsArray.splice(targetStoryIndexCurrentLane + 1, 0, payload.dragStoryId)
-        }
-
-        return state.updateIn([currentLane, 'storyIds'], storyIds => storyIdsArray)
-        // return {
-        //   ...state,
-        //   [currentLane]: {
-        //     ...state[currentLane],
-        //     storyIds: storyIdsArray
-        //   }
-        // }
+        // Rearrange the storyIds array to reflect the new order
+        return state.updateIn([payload.newLaneId, 'storyIds'], storyIds => {
+          let index = 0
+          if (targetStoryIndexInPrevLane >= 0) {
+            index = targetStoryIndexInPrevLane
+          }
+          return storyIds.remove(draggedStoryIndexInPrevLane).insert(index, payload.draggedStoryId)
+        })
 
       } else {
 
-        // Remove from current lane and position
-        let currentLaneStoryIdsArray = [ ...state[currentLane].storyIds ]
-        currentLaneStoryIdsArray.splice(dragStoryIndexCurrentLane, 1)
-
-        //  Add to the stories array for the new lane
-        let newLaneStoryIdsArray = [ ...state[payload.newLaneId].storyIds ]
-
-        // Add in the new lane in the new position.
-        // If the targetIndex is falsy we assume it's the top
-        if (targetStoryIndexNewLane < 0) {
-          newLaneStoryIdsArray.splice(0, 0, payload.dragStoryId)
-        } else {
-          newLaneStoryIdsArray.splice(targetStoryIndexNewLane + 1, 0, payload.dragStoryId)
-        }
-
-        // New lane.
-        // Remove from the previous lane
-        // Add to the new lane, in the correct position
-        return {
-          ...state,
-          [currentLane]: {
-            ...state[currentLane],
-            storyIds: currentLaneStoryIdsArray
-          },
-          [payload.newLaneId]: {
-            ...state[payload.newLaneId],
-            storyIds: newLaneStoryIdsArray
-          }
-        }
+        return state.updateIn([draggedStoryPrevLane.id, 'storyIds'], storyIds => storyIds.remove(draggedStoryIndexInPrevLane))
+          .updateIn([payload.newLaneId, 'storyIds'], storyIds => {
+            let index = 0
+            if (targetStoryIndexNewLane >= 0) {
+              index = targetStoryIndexNewLane + 1
+            }
+            return storyIds.insert(index, payload.draggedStoryId)
+          })
       }
 
     default:

@@ -10,7 +10,7 @@ const laneTarget = {
   drop (props, monitor, component) {
     const droppedItem = {
       newLaneId: props.laneId,
-      dragStoryId: monitor.getItem().storyId,
+      draggedStoryId: monitor.getItem().storyId,
       dropTargetId: props.id
     }
 
