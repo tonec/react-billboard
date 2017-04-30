@@ -123,7 +123,6 @@ describe('LaneReducer', () => {
 
     expect(LaneReducer(initialState, action).getIn(['1', 'storyIds'])).to.include('2')
     expect(LaneReducer(initialState, action).getIn(['2', 'storyIds']).includes('2')).to.equal(false)
-
   })
 
 })
