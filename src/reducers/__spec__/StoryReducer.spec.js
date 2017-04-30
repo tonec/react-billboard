@@ -1,25 +1,27 @@
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import { fromJS } from 'immutable'
+import chaiImmutable from 'chai-immutable'
 import {
   SAVE_STORY
 } from '../../actions/types'
 import StoryReducer from '../StoryReducer'
+
+chai.use(chaiImmutable)
 
 describe('StoryReducer', () => {
 
   let initialState
 
   beforeEach(() => {
-    initialState = {
-      byId: {
-        '1': { id: '1', title: 'Story 1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-        '2': { id: '2', title: 'Story 2', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-        '3': { id: '3', title: 'Story 3', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
-      }
-    }
+    initialState = fromJS({
+      '1': { id: '1', title: 'Story 1', description: 'Story 1 description' },
+      '2': { id: '2', title: 'Story 2', description: 'Story 2 description' },
+      '3': { id: '3', title: 'Story 3', description: 'Story 3 description' }
+    })
   })
 
   it('should return the initial state', () => {
-    expect(StoryReducer(undefined, {})).to.deep.equal(initialState)
+    expect(StoryReducer(initialState, {})).to.deep.equal(initialState)
   })
 
   it('should handle a story being added', () => {
@@ -27,18 +29,15 @@ describe('StoryReducer', () => {
       type: SAVE_STORY,
       payload: {
         id: '111',
-        title: 'New title'
+        title: 'New title',
+        description: 'New description'
       }
     }
-    const expectedState = {
-      byId: {
-        '1': { id: '1', title: 'Story 1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-        '2': { id: '2', title: 'Story 2', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-        '3': { id: '3', title: 'Story 3', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-        '111': { id: '111', title: 'New title' }
-      }
-    }
-    expect(StoryReducer(initialState, action)).to.deep.equal(expectedState)
+
+    expect(StoryReducer(initialState, action)).to.have.property('111')
+    expect(StoryReducer(initialState, action).getIn(['111', 'id'])).to.equal('111')
+    expect(StoryReducer(initialState, action).getIn(['111', 'title'])).to.equal('New title')
+    expect(StoryReducer(initialState, action).getIn(['111', 'description'])).to.equal('New description')
   })
 
 })

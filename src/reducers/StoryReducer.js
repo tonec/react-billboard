@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux'
+import { Map, fromJS } from 'immutable'
 
 import {
   SAVE_STORY
 } from '../actions/types'
 
-const INITIAL_STATE = {
+const INITIAL_STATE = fromJS({
   '1': {
     id: '1',
     title: 'Story 1',
@@ -20,26 +20,18 @@ const INITIAL_STATE = {
     title: 'Story 3',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   }
-}
+})
 
-const storiesById = (state = INITIAL_STATE, action) => {
+const StoryReducer = (state = INITIAL_STATE, action) => {
   const { payload } = action
   switch (action.type) {
 
     case SAVE_STORY:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
+      return state.set(payload.id, Map(payload))
 
     default:
       return state
   }
 }
-
-const StoryReducer = combineReducers({
-  byId: storiesById,
-  allIds: []
-})
 
 export default StoryReducer

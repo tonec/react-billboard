@@ -50,17 +50,18 @@ LaneContainer.propTypes = {
   laneId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   editing: PropTypes.bool,
-  storyIds: PropTypes.array
+  storyIds: PropTypes.array.isRequired,
+  stories: PropTypes.array.isRequired
 }
 
 const mapStateToProps = ({ story }) => {
   return {
-    stories: stackedStorySelector(story.byId)
+    stories: stackedStorySelector(story)
   }
 }
 
 function stackedStorySelector (storiesById) {
-  return Object.keys(storiesById).map(id => storiesById[id])
+  return Object.keys(storiesById.toJS()).map(id => storiesById.get(id)).map(map => map.toJS())
 }
 
 export default connect(mapStateToProps, { enableLaneEdit, finishLaneEdit })(LaneContainer)

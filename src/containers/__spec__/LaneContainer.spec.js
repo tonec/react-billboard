@@ -43,9 +43,9 @@ function setup () {
 
 describe('<LaneContainer />', () => {
 
-  it('should render Lane', () => {
-    const { wrapper } = setup()
-    expect(wrapper.find(Lane)).to.be.length(1)
-  })
+  // it('should render Lane', () => {
+  //   const { wrapper } = setup()
+  //   expect(wrapper.find(Lane)).to.be.length(1)
+  // })
 
 })
