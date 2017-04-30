@@ -58,7 +58,7 @@ ModalContainer.propTypes = {
 
 const mapStateToProps = ({ modal }) => {
   return {
-    modal
+    modal: modal.toJS()
   }
 }
 
