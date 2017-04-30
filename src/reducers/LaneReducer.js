@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux'
-import { Map, List } from 'immutable'
+import { Map, fromJS } from 'immutable'
 
 import {
   ADD_LANE,
@@ -10,25 +9,25 @@ import {
   STORY_DROPPED
 } from '../actions/types'
 
-const INITIAL_STATE = Map({
-  '1': Map({
+const INITIAL_STATE = fromJS({
+  '1': {
      'id': '1',
      'name': 'Lane 1',
      'editing': false,
-     'storyIds': List([ '1', '2' ])
-  }),
-  '2': Map({
+     'storyIds': [ '1', '2' ]
+  },
+  '2': {
      'id': '2',
      'name': 'Lane 2',
      'editing': false,
-     'storyIds': List([ '3' ])
-  }),
-  '3': Map({
+     'storyIds': [ '3' ]
+  },
+  '3': {
      'id': '3',
      'name': 'Lane 3',
      'editing': false,
-     'storyIds': List([])
-  })
+     'storyIds': []
+  }
 })
 
 const LaneReducer = (state = INITIAL_STATE, action) => {

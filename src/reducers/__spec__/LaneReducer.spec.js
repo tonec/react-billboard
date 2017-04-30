@@ -1,5 +1,5 @@
 import chai, { expect } from 'chai'
-import { Map, List } from 'immutable'
+import { fromJS } from 'immutable'
 import chaiImmutable from 'chai-immutable'
 
 chai.use(chaiImmutable)
@@ -19,25 +19,25 @@ describe('LaneReducer', () => {
   let initialState
 
   beforeEach(() => {
-    initialState = Map({
-        '1': Map({
+    initialState = fromJS({
+        '1': {
            'id': '1',
            'name': 'Lane 1',
            'editing': false,
-           'storyIds': List([ '1', '2' ])
-        }),
-        '2': Map({
+           'storyIds': [ '1', '2' ]
+        },
+        '2': {
            'id': '2',
            'name': 'Lane 2',
            'editing': false,
-           'storyIds': List([ '3' ])
-        }),
-        '3': Map({
+           'storyIds': [ '3' ]
+        },
+        '3': {
            'id': '3',
            'name': 'Lane 3',
            'editing': false,
-           'storyIds': List([])
-        })
+           'storyIds': []
+        }
       })
     })
 
